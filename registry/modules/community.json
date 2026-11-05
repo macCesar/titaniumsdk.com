@@ -6,7 +6,7 @@
       "titanium-module in:topics language:objc language:swift language:java language:kotlin language:javascript",
       "titanium-sdk in:topics language:objc language:swift language:java language:kotlin language:javascript"
     ],
-    "repos": 146
+    "repos": 147
   },
   "modules": [
     {
@@ -851,7 +851,7 @@
       ],
       "stars": 6,
       "archived": false,
-      "pushedAt": "2025-08-30T11:39:49Z"
+      "pushedAt": "2026-11-04T15:25:01Z"
     },
     {
       "id": "pinio/tiads",
@@ -1537,7 +1537,7 @@
       ],
       "stars": 2,
       "archived": false,
-      "pushedAt": "2026-11-04T10:33:10Z"
+      "pushedAt": "2026-11-04T18:59:01Z"
     },
     {
       "id": "m1ga/ti.rootcheck",
@@ -1949,6 +1949,20 @@
       "stars": 0,
       "archived": false,
       "pushedAt": "2026-02-05T20:27:47Z"
+    },
+    {
+      "id": "JeremyFlight/ti.barcodescanner",
+      "name": "ti.barcodescanner",
+      "owner": "JeremyFlight",
+      "ownerUrl": "https://github.com/JeremyFlight",
+      "url": "https://github.com/JeremyFlight/ti.barcodescanner",
+      "description": "Simple Titanium iOS module for reading barcodes with the device's camera",
+      "platforms": [
+        "ios"
+      ],
+      "stars": 0,
+      "archived": false,
+      "pushedAt": "2026-11-04T14:15:27Z"
     },
     {
       "id": "jonasfunk/titanium-leakcanay",
