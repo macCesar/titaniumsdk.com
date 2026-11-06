@@ -2,6 +2,7 @@ import { TypeReference } from '@/components/docs/type-reference';
 import { resolveVersion, sdkType } from '@/lib/docs/registry';
 import { buildTypeView } from '@/lib/docs/type-view';
 import { canonicalPath, isIndexedVersion } from '@/lib/docs/versions';
+import { markdownAlternate } from '@/lib/markdown-copy';
 import { NOINDEX } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
@@ -68,7 +69,13 @@ export async function generateMetadata({
     // a casing variant that still resolves cannot claim a canonical of its own.
     // For the latest release this points at the unversioned page: the two are
     // the same content and only one of them should compete in search.
-    alternates: { canonical: `${SITE_URL}${canonicalPath(resolved, view.type.name)}` },
+    //
+    // The Markdown copy is this page's own, pinned like the page is, rather
+    // than the canonical's: an agent that asked for 12.6.0 wants 12.6.0.
+    alternates: {
+      canonical: `${SITE_URL}${canonicalPath(resolved, view.type.name)}`,
+      types: markdownAlternate(`/docs/sdk/${resolved}/${view.type.name}`),
+    },
     // Past the cutoff a version is served but not offered: 284 types across
     // twenty releases is 5,680 near-identical pages, and the older ones are
     // reached from a link somebody kept rather than from a search.

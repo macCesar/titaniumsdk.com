@@ -3,6 +3,7 @@ import { Prose } from '@/components/docs/prose';
 import { ModuleLayout } from '@/components/modules/shell';
 import { buildModuleReference, moduleLinker } from '@/lib/docs/module-view';
 import {
+  isUnsupported,
   listedModuleIds,
   moduleAliases,
   moduleBlurb,
@@ -11,6 +12,7 @@ import {
   readmeRelativeBase,
   referenceVersions,
 } from '@/lib/docs/modules';
+import { markdownAlternate } from '@/lib/markdown-copy';
 import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -46,7 +48,13 @@ export async function generateMetadata({
   return {
     title: `${index.moduleId} - Titanium modules`,
     description: moduleBlurb(index),
-    alternates: { canonical: `${SITE_URL}/modules/${index.moduleId}` },
+    // A delisted module has no copy: `markdownFor` refuses it.
+    alternates: {
+      canonical: `${SITE_URL}/modules/${index.moduleId}`,
+      ...(isUnsupported(index.moduleId)
+        ? {}
+        : { types: markdownAlternate(`/modules/${index.moduleId}`) }),
+    },
   };
 }
 

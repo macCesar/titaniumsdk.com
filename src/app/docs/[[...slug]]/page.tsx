@@ -29,6 +29,7 @@ import {
   type DocSection,
 } from '@/lib/docs/ia';
 import { lastUpdated } from '@/lib/docs/last-updated';
+import { markdownAlternate } from '@/lib/markdown-copy';
 import { NOINDEX } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
@@ -139,7 +140,13 @@ export async function generateMetadata({
     // do not compete for the same query. Where current has no equivalent there
     // is nothing to consolidate to and the page goes `noindex, follow`
     // instead. See `archivedSeo`.
-    alternates: { canonical: `${SITE_URL}${seo.canonical}` },
+    //
+    // A written page in the current major also names its Markdown copy
+    // (TI-97). An archived major's pages and an unwritten path have none.
+    alternates: {
+      canonical: `${SITE_URL}${seo.canonical}`,
+      ...(!archived && page ? { types: markdownAlternate(path) } : {}),
+    },
     // A page's own verdict wins over the archive's. A draft, or a defined path
     // with nothing written under it, should stay out of the index whichever
     // major it sits in; only where the page itself has no objection does the

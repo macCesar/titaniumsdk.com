@@ -1,6 +1,7 @@
 import { DocsShell } from '@/components/docs/docs-shell';
 import { VersionIndex } from '@/components/docs/version-index';
 import { latestSdkVersion } from '@/lib/docs/registry';
+import { markdownAlternate } from '@/lib/markdown-copy';
 import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -19,7 +20,7 @@ import { notFound } from 'next/navigation';
 export const metadata: Metadata = {
   title: 'Titanium API - Titanium SDK',
   description: 'Every Titanium SDK type, method, property, and event.',
-  alternates: { canonical: `${SITE_URL}/docs/sdk` },
+  alternates: { canonical: `${SITE_URL}/docs/sdk`, types: markdownAlternate('/docs/sdk') },
 };
 
 export default function ApiIndexPage() {

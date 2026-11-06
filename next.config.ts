@@ -246,9 +246,10 @@ const hideInternalReadme = [{ source: '/docs/README.md', destination: '/docs/_in
  *
  * A `route.ts` may not share a segment with a `page.tsx`, and `/docs` is an
  * optional catch-all page, so nothing can be filed at `/docs/setup/macos.md`.
- * These map the suffix onto `app/md/[...path]`, which reads the original path
- * back off the request and refuses anything that arrived at the destination
- * directly, so each document keeps one address.
+ * These map the suffix onto `app/md/[...path]`. `proxy.ts` refuses a request
+ * that names `/md/...` directly, so each document keeps one address, and it is
+ * also what sends a page's own address there for an `Accept: text/markdown`
+ * request (TI-97).
  *
  * `beforeFiles` rather than `afterFiles`: the docs route declares
  * `dynamicParams = false`, and an `afterFiles` rewrite is consulted after
