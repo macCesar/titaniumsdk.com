@@ -4,6 +4,7 @@ import { VersionIndex } from '@/components/docs/version-index';
 import { latestSdkVersion, resolveVersion, sdkType, sdkVersions } from '@/lib/docs/registry';
 import { buildTypeView } from '@/lib/docs/type-view';
 import { canonicalPath, isIndexedVersion } from '@/lib/docs/versions';
+import { markdownAlternate } from '@/lib/markdown-copy';
 import { NOINDEX } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
@@ -45,7 +46,10 @@ export async function generateMetadata({
     return {
       title: `Titanium API ${version} - Titanium SDK`,
       description: `Every Titanium SDK type, method, property, and event in ${version}.`,
-      alternates: { canonical: `${SITE_URL}${canonicalPath(version)}` },
+      alternates: {
+        canonical: `${SITE_URL}${canonicalPath(version)}`,
+        types: markdownAlternate(`/docs/sdk/${version}`),
+      },
       // Served either way. Past the cutoff it is asked not to compete with the
       // releases people are actually on, and the notice on the page says the
       // same thing to the reader. See `isIndexedVersion`.
@@ -59,7 +63,10 @@ export async function generateMetadata({
   return {
     title: `${view.type.name} - Titanium SDK`,
     description: view.type.summary?.replace(/<[^>]+>/g, '').slice(0, 160),
-    alternates: { canonical: `${SITE_URL}/docs/sdk/${view.type.name}` },
+    alternates: {
+      canonical: `${SITE_URL}/docs/sdk/${view.type.name}`,
+      types: markdownAlternate(`/docs/sdk/${view.type.name}`),
+    },
   };
 }
 

@@ -1,5 +1,6 @@
 import { Browse } from '@/components/modules/browse';
 import { communityListings, moduleSummaries } from '@/lib/docs/modules';
+import { markdownAlternate } from '@/lib/markdown-copy';
 import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   title: 'Modules - Titanium SDK',
   description:
     'Native modules for Titanium: Maps, Bluetooth, NFC, Facebook, biometrics, and more, for iOS and Android.',
-  alternates: { canonical: `${SITE_URL}/modules` },
+  alternates: { canonical: `${SITE_URL}/modules`, types: markdownAlternate('/modules') },
 };
 
 export default function ModulesIndex() {

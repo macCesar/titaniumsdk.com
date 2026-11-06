@@ -1,6 +1,5 @@
 import { llmsFullTxt } from '@/lib/docs/llms';
-import { isIndexableHost } from '@/lib/site';
-import { headers } from 'next/headers';
+import { CORPUS_CACHE_CONTROL } from '@/lib/markdown-copy';
 
 /**
  * The whole guide corpus in one file (TI-57).
@@ -9,24 +8,17 @@ import { headers } from 'next/headers';
  * briefly, the reference is 284 types that a reader can fetch one at a time,
  * and a file nobody can hold in context is not a corpus.
  *
- * Host-guarded for the same reason `llms.txt` is, and request-time for the same
- * reason. See that route.
+ * Served on every host and prerendered, for the reasons `llms.txt` gives. About
+ * 260KB, under the 1MB cap `llms.ts` enforces.
  */
 
-const NOT_FOUND = 'Not found. The machine-readable corpus is published on titaniumsdk.com only.\n';
+export const dynamic = 'force-static';
 
-export async function GET() {
-  if (!isIndexableHost((await headers()).get('host'))) {
-    return new Response(NOT_FOUND, {
-      status: 404,
-      headers: { 'content-type': 'text/plain; charset=utf-8' },
-    });
-  }
-
+export function GET() {
   return new Response(llmsFullTxt().text, {
     headers: {
       'content-type': 'text/plain; charset=utf-8',
-      'cache-control': 'public, max-age=600, s-maxage=3600, stale-while-revalidate=86400',
+      'cache-control': CORPUS_CACHE_CONTROL,
     },
   });
 }
