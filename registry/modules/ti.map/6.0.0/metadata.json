@@ -36,5 +36,11 @@
       "tag": "v6.0.0-iphone"
     }
   ],
-  "hasApiDocs": false
+  "hasApiDocs": false,
+  "source": {
+    "repo": "tidev/ti.map",
+    "ref": "6.0.0",
+    "commit": "d604640ff4f79f03ef00df50e9c23129d7297c6a",
+    "builtAt": "2026-11-09T12:29:57.629Z"
+  }
 }

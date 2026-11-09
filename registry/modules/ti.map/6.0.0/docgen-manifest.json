@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "generator": "sha256:3b7bd6f149505791face123269bbc9ea944e76c3b6fcdaa9786a2733e097fa29",
+  "external": {
+    "repo": "tidev/titanium-sdk",
+    "version": "main",
+    "hash": "sha256:cf5782e888a89b15f04132ea960e3cfb0ae5341ebec1bda4194b30cba061d06b"
+  },
+  "generatedAt": "2026-11-09T12:29:57.623Z",
+  "sources": {
+    "Annotation.yml": {
+      "hash": "sha256:e2e9d3952195a13672d6013041f38832254a8cf826d7d330edb50dcb70636990",
+      "types": [
+        "Modules.Map.Annotation"
+      ]
+    },
+    "Camera.yml": {
+      "hash": "sha256:0bbbb75cd2be45056dc19872389a21f2803491791c92f2db781355da29df2b20",
+      "types": [
+        "Modules.Map.Camera"
+      ]
+    },
+    "Circle.yml": {
+      "hash": "sha256:b8e299f322c81fa9e73f78413b56ea382ca6c1e63720a17e25383483cf83e0db",
+      "types": [
+        "Modules.Map.Circle"
+      ]
+    },
+    "ImageOverlay.yml": {
+      "hash": "sha256:bff8f39f3053759b78154528a999d0d8d38e765c6a9f7358c4887a174958df49",
+      "types": [
+        "Modules.Map.ImageOverlay",
+        "MapBoundsCoordinateType"
+      ]
+    },
+    "Map.yml": {
+      "hash": "sha256:867674d1c022e9aa20999290d2a80d08dbeade47d3f063c5a614465418f308b9",
+      "types": [
+        "Modules.Map",
+        "MapPointType",
+        "SearchCompletionOptions"
+      ]
+    },
+    "Polygon.yml": {
+      "hash": "sha256:b935e6ccd6a5705743b49557de8b7b9b6723117efdc981d3177e5c7cd6341d01",
+      "types": [
+        "Modules.Map.Polygon"
+      ]
+    },
+    "Polyline.yml": {
+      "hash": "sha256:fb12e19a8570b5c89968884a47ac09becd3db0347c95a3a005e1ff54fea4bbe0",
+      "types": [
+        "Modules.Map.Polyline"
+      ]
+    },
+    "Route.yml": {
+      "hash": "sha256:d6b0ddf6b789de68a0ae951635b58043119c2bd3cb849664217d522c7200c42f",
+      "types": [
+        "Modules.Map.Route"
+      ]
+    },
+    "Snapshotter.yml": {
+      "hash": "sha256:50c094ab64ef97cb2e0a1e9fc4f193f544474bceb75ccf90e4b916a5568ca6bb",
+      "types": [
+        "Modules.Map.Snapshotter",
+        "SnapshotSize"
+      ]
+    },
+    "StreetViewPanorama.yml": {
+      "hash": "sha256:a61344ada0e4931fc2b155797567ebf3a45d41d5c608d924202d7fc7b4448dcd",
+      "types": [
+        "Modules.Map.StreetViewPanorama",
+        "StreetViewPosition"
+      ]
+    },
+    "View.yml": {
+      "hash": "sha256:5cfafd8cc701c6fe28f273dd88568e06d9feeb378c82387051586bbe6949aa65",
+      "types": [
+        "Modules.Map.View",
+        "MapViewPadding",
+        "MapRegionTypev2",
+        "MapLocationTypeV2",
+        "CameraAnimationParams",
+        "ClusterAnnotationParams"
+      ]
+    }
+  },
+  "types": {
+    "Modules.Map.Annotation": {
+      "source": "Annotation.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:4bc338fbd7848f670653dc9c3fc6dc76e43cd8a7263601eeb91876a8132fc507"
+    },
+    "Modules.Map.Camera": {
+      "source": "Camera.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:f402b850c4409b91c7ad4cc5a52a7ea913b681b66e40e012db21447022ae0f25"
+    },
+    "Modules.Map.Circle": {
+      "source": "Circle.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:823f243443a0c340d192aa6cb5a756088e272432a1fe38f90ea06a9f989daba9"
+    },
+    "Modules.Map.ImageOverlay": {
+      "source": "ImageOverlay.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:2f3e26d0c651fb7dabe3bfc302510b3cafc3e402a34bc36ca51d969ed52a4b93"
+    },
+    "Modules.Map": {
+      "source": "Map.yml",
+      "extends": "Titanium.Module",
+      "outputHash": "sha256:345dd73d4134840f3ece786fe30281ab3511344dcd8f202a32592a0e5c1e4915"
+    },
+    "MapPointType": {
+      "source": "Map.yml",
+      "outputHash": "sha256:a61264c1df5b127064f83a1a2d9f5cb5d7a47c3f35e0e9b6d8855082790c0a8d"
+    },
+    "Modules.Map.Polygon": {
+      "source": "Polygon.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:bd4dae7d03592cdba33d5c2624bde2b2ed3332e3d49ce1ccfef50c4f9bcead02"
+    },
+    "Modules.Map.Polyline": {
+      "source": "Polyline.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:034b0063e6abfa0d0ee08b454909e03c4cf76ee7865c80ee9d49ff2b47de2231"
+    },
+    "Modules.Map.Route": {
+      "source": "Route.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:b5b27ff09590d7351e3e998826ca204c12b1cc471b5cb945722639cd2c5d7469"
+    },
+    "Modules.Map.Snapshotter": {
+      "source": "Snapshotter.yml",
+      "extends": "Titanium.Proxy",
+      "outputHash": "sha256:e84da81dd3b93687c9d639a8f0881798040f6a9667fb143438aaa2546886b00e"
+    },
+    "Modules.Map.StreetViewPanorama": {
+      "source": "StreetViewPanorama.yml",
+      "extends": "Titanium.UI.View",
+      "outputHash": "sha256:53771840e5ff69561872b70a428aeff62c883bea9fe5b92a2bc027c124430050"
+    },
+    "Modules.Map.View": {
+      "source": "View.yml",
+      "extends": "Titanium.UI.View",
+      "outputHash": "sha256:20a0686e0e6ea964b4b1a288bdb7184e29b2c0fe1e9f4c066a1ae1ebbef95287"
+    },
+    "MapRegionTypev2": {
+      "source": "View.yml",
+      "outputHash": "sha256:2ec3746ae2b8ecaa52d7269bcb4a754f16fa18920332c1bc2002b9ed9defec59"
+    }
+  }
+}
