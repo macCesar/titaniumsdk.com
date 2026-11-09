@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "generator": "sha256:3b7bd6f149505791face123269bbc9ea944e76c3b6fcdaa9786a2733e097fa29",
+  "external": {
+    "repo": "tidev/titanium-sdk",
+    "version": "main",
+    "hash": "sha256:cf5782e888a89b15f04132ea960e3cfb0ae5341ebec1bda4194b30cba061d06b"
+  },
+  "generatedAt": "2026-11-09T12:51:15.897Z",
+  "sources": {
+    "Identity.yml": {
+      "hash": "sha256:7eab982f1bb76d2ed3852dca61fa6604ba0184d7225a29c6f85781b399861970",
+      "types": [
+        "Modules.Identity",
+        "IdentityAuthenticationType",
+        "DeviceCanAuthenticateResult"
+      ]
+    },
+    "KeychainItem.yml": {
+      "hash": "sha256:60dffd3611680f3b8d2ad34a39626df3a7cf2f22d854028b25791db513596122",
+      "types": [
+        "Modules.Identity.KeychainItem",
+        "KeychainItemType"
+      ]
+    }
+  },
+  "types": {
+    "Modules.Identity": {
+      "source": "Identity.yml",
+      "extends": "Titanium.Module",
+      "outputHash": "sha256:64a3d8711244ae40022bbd948012408347ac0cb25e6603c7b2289e1a13c123b8"
+    },
+    "Modules.Identity.KeychainItem": {
+      "source": "KeychainItem.yml",
+      "extends": "Titanium.Module",
+      "outputHash": "sha256:72da6ec92584c4d79e271e97bb76b0765d42ce7b3b97ac8f2ce021a2725aa344"
+    }
+  }
+}
