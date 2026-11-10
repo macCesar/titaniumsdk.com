@@ -10,6 +10,6 @@ jobs:
 
     steps:
       - name: Check CLA
-        uses: tidev/tidev-cla-action@v2
+        uses: tidev/tidev-cla-action@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
