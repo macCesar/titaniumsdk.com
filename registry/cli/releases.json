@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "fetchedAt": "2026-09-10T20:01:19.792Z",
+  "fetchedAt": "2026-11-10T07:27:11.250Z",
   "source": {
     "registry": "https://registry.npmjs.org",
     "package": "titanium",
@@ -862,6 +862,11 @@
       "node": ">=22.19.0",
       "date": "2026-08-22T15:44:18Z",
       "url": "https://github.com/tidev/titanium-cli/releases/tag/v9.1.0"
+    },
+    {
+      "version": "9.2.0",
+      "date": "2026-11-10T07:26:09Z",
+      "url": "https://github.com/tidev/titanium-cli/releases/tag/v9.2.0"
     }
   ]
 }
