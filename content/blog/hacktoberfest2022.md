@@ -30,4 +30,4 @@ Fork the repos, create a branch, make some changes and create a PR.
 
 ## Questions
 
-If you have any questions feel join [TiSlack](https://tidev.slack.com)! Code strong and enjoy Hacktoberfest!
+If you have any questions feel join [TiSlack](/slack)! Code strong and enjoy Hacktoberfest!

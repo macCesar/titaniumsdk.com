@@ -59,4 +59,4 @@ Missing a known issue? Please report it via [GitHub](https://github.com/tidev/ti
 
 ## How can I support?
 
-If you like our work and want to support, think about a [donation](https://tidev.io/donate) or to [contribute](/contribute) with your time and code.
+If you like our work and want to support, think about a [donation](/donate) or to [contribute](/contribute) with your time and code.

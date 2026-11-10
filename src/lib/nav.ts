@@ -82,12 +82,13 @@ export const communityNav: NavItem[] = [
    * site gives its developer-resources silo - which on this site is `/docs`.
    */
   { href: '/directory', label: 'Developer Directory' },
-  { href: 'https://tidev.slack.com', label: 'Slack' },
+  // The site's own page rather than Slack: the workspace root 403s for anybody
+  // not yet a member, and `/slack` offers both signing up and logging in.
+  { href: '/slack', label: 'Slack' },
   {
     // Contributing is about the software, so its home is here rather than on
-    // tidev.io. Settled in TI-68, see `docs/blog-split.md`. The link out is
-    // one-way: our page sends people to tidev.io to sign the CLA, which is
-    // where the legal relationship lives.
+    // the foundation's site. Settled in TI-68, see `docs/blog-split.md`. The
+    // CLA lives under it, at `/contribute/cla`.
     href: '/contribute',
     label: 'Contribute',
   },

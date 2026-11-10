@@ -47,20 +47,11 @@ const OLD_POST = /^\/posts\/\d{4}\/([\w-]+)\.md$/;
  * The one Slack address, chosen to match `communityNav` in `src/lib/nav.ts`.
  *
  * The archive uses both `tidev.slack.com` and `slack.tidev.io` depending on who
- * wrote the post. Both resolve; the site had already picked one, so this is
- * normalisation rather than a new decision.
+ * wrote the post. The first 403s for anybody not yet a member and the second
+ * died with the foundation's domain, so both go to the site's own `/slack`,
+ * which offers the invite and the login side by side.
  */
-const SLACK = 'https://tidev.slack.com';
-
-/**
- * Donations are the foundation's, not the software's.
- *
- * `/donate` was a page on tidev.io and the import made it root-relative, which
- * pointed 38 links at a path this site has never served. `docs/blog-split.md`
- * puts funding on tidev.io, and that page offers the same two routes the
- * footer's `supportNav` does.
- */
-const DONATE = 'https://tidev.io/donate';
+const SLACK = '/slack';
 
 /**
  * A version's release notes here, or null when there is no page to send to.
@@ -110,7 +101,7 @@ function guidePath(path: string): string | null {
 export function rewriteLink(href: string): string | null {
   if (/^https?:\/\/downloads\.titaniumsdk\.com(?=[/:?#]|$)/.test(href)) return '/downloads';
   if (/^https?:\/\/(?:slack\.tidev\.io|tidev\.slack\.com)\/?$/.test(href)) {
-    return href === SLACK ? null : SLACK;
+    return SLACK;
   }
 
   // Everything past here is a path on this site, however it was addressed.
@@ -125,7 +116,8 @@ export function rewriteLink(href: string): string | null {
   const post = OLD_POST.exec(path);
   if (post) return `/blog/${post[1].replace(/_/g, '-')}`;
 
-  if (path === '/donate') return DONATE;
+  // `/donate` needs nothing: the archive wrote it root-relative, and since the
+  // foundation's domain was lost the page lives on this site.
 
   // Already somewhere real, but written with the domain in it: absolute links
   // send a preview deploy to production and hard-code a name the site may not

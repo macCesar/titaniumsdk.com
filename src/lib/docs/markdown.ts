@@ -2,6 +2,7 @@ import { assetUrl } from './assets.ts';
 import { renderCallouts } from './callouts.ts';
 import { highlightCodeBlocks } from './highlight.ts';
 import { apiTarget, pathLinker, type ApiLinker } from './links.ts';
+import { currentTiNamespace } from './ti-namespace.ts';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 
@@ -129,17 +130,25 @@ const RETIRED_DOMAINS = ['appcelerator.com', 'appcelerator.org'];
  * placeholder - a soft 404, which is why a status check alone reported it
  * healthy and TI-92 left it in place. The community itself is still there.
  *
- * `slack.tidev.io` rather than the `tidev.slack.com` workspace root: it is the
- * join page, and a reader following this link from the documentation is more
- * likely to be looking for a way in than to be a signed-in member already - the
- * workspace root answers 403 to everyone else. It is also the replacement the
- * SDK chose for itself, in `titanium-sdk` commit 81d3f4a.
+ * `slack.tidev.io` replaced it - the SDK's own choice, in `titanium-sdk`
+ * commit 81d3f4a - and then went the same way when the foundation lost
+ * `tidev.io`. Both now go to this site's `/slack`, which offers the invite
+ * and the login side by side. The SDK 13.0.0 release notes link the second one.
  *
- * Mapped to that page rather than carrying any path across: all six links in
- * the corpus are bare root URLs, and a path that meant something on the old
+ * Not the `tidev.slack.com` workspace root: a reader following this link from
+ * the documentation is more likely to be looking for a way in than to be a
+ * signed-in member already, and the workspace root answers 403 to everyone
+ * else.
+ *
+ * Mapped to that page rather than carrying any path across: every such link in
+ * the corpus is a bare root URL, and a path that meant something on the old
  * domain would mean nothing here.
  */
-const MOVED_HOSTS = new Map([['tislack.org', 'https://slack.tidev.io/']]);
+const SLACK_PAGE = '/slack';
+const MOVED_HOSTS = new Map([
+  ['tislack.org', SLACK_PAGE],
+  ['slack.tidev.io', SLACK_PAGE],
+]);
 
 /**
  * The host a reference addresses, or null if it addresses none.
@@ -188,7 +197,7 @@ export function renderMarkdown(source: string | undefined, options: RenderOption
         : options.link;
   const relative = options.relative;
 
-  const html = md.render(source);
+  const html = md.render(currentTiNamespace(source));
 
   const clean = sanitizeHtml(html, {
     ...SANITIZE,

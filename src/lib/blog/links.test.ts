@@ -23,9 +23,9 @@ describe('unresolved', () => {
   });
 
   test('rejects a path no route serves', () => {
-    // The archive linked this on 38 posts. tidev.io has the page; this site
-    // never has.
-    assert.ok(unresolved('/donate'));
+    // The archive's old post addresses, which `rewriteLink` maps onto this blog.
+    assert.ok(unresolved('/posts/2022/release_sdk_11.md'));
+    assert.ok(unresolved('/sponsor'));
     assert.ok(unresolved('/guide/Alloy_Framework/Alloy_Guide/Alloy_PurgeTSS.html'));
   });
 

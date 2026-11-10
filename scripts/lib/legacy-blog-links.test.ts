@@ -87,14 +87,15 @@ describe('rewriteLink', () => {
     assert.equal(rewriteLink('https://downloads.titaniumsdk.community/x'), null);
   });
 
-  test('normalises both spellings of Slack onto one', () => {
-    assert.equal(rewriteLink('https://slack.tidev.io/'), 'https://tidev.slack.com');
-    assert.equal(rewriteLink('https://tidev.slack.com/'), 'https://tidev.slack.com');
-    assert.equal(rewriteLink('https://tidev.slack.com'), null);
+  test("sends both spellings of Slack to the site's Slack page", () => {
+    assert.equal(rewriteLink('https://slack.tidev.io/'), '/slack');
+    assert.equal(rewriteLink('https://tidev.slack.com/'), '/slack');
+    assert.equal(rewriteLink('https://tidev.slack.com'), '/slack');
+    assert.equal(rewriteLink('/slack'), null);
   });
 
-  test('sends donations to the foundation', () => {
-    assert.equal(rewriteLink('/donate'), 'https://tidev.io/donate');
+  test('leaves donations on this site', () => {
+    assert.equal(rewriteLink('/donate'), null);
   });
 
   test('maps an old tidev.io post path onto this blog', () => {
