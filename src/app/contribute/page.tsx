@@ -5,14 +5,13 @@ import type { Metadata } from 'next';
 /**
  * How to help (TI-76).
  *
- * Ported from tidev.io/contribute, which is where this lived before the split
- * in TI-68 put anything about the software on this site. The copy is that
- * page's, near enough verbatim: it says what the project actually wants and
- * rewriting it would only have made it different, not better.
+ * Ported from the foundation's old site, which is where this lived before the
+ * split in TI-68 put anything about the software on this site. The copy is
+ * that page's, near enough verbatim: it says what the project actually wants
+ * and rewriting it would only have made it different, not better.
  *
- * The CLA is the exception. Signing stays on tidev.io, which owns the legal
- * relationship, so this page explains the agreement and sends people there.
- * Two places collecting the same signature is two things to keep correct.
+ * The CLA has its own page, `/contribute/cla`. Signing used to stay on the
+ * foundation's site; that domain was lost, so the agreement moved here too.
  */
 
 export const metadata: Metadata = {
@@ -22,8 +21,8 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/contribute` },
 };
 
-/** Where the CLA is read and signed. Not here, on purpose. */
-const CLA_URL = 'https://tidev.io/contribute';
+/** Where the CLA is read and signed. */
+const CLA_URL = '/contribute/cla';
 
 /**
  * What each donation route actually is, keyed by the URL in `supportNav`.

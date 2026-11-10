@@ -20,7 +20,7 @@ children of the root `<ti:app>` unless the table says otherwise.
 ## Identity
 
 ```xml
-<ti:app xmlns:ti="http://ti.tidev.io">
+<ti:app xmlns:ti="http://ti.titaniumsdk.com">
   <id>com.example.hello</id>
   <name>Hello</name>
   <version>1.0</version>
@@ -272,7 +272,7 @@ Both are Android only. The iOS build reads nothing from `timodule.xml`: an iOS
 module's `Info.plist` and entitlements come from its own files.
 
 ```xml
-<ti:app xmlns:ti="http://ti.tidev.io">
+<ti:app xmlns:ti="http://ti.titaniumsdk.com">
   <modules>
     <module platform="android">ti.playservices</module>
   </modules>

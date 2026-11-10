@@ -216,15 +216,37 @@ describe('renderMarkdown, retired hosts', () => {
     // link is repointed rather than dropped - the text still reads correctly.
     // The join page, not the workspace root, which 403s for non-members.
     const html = renderMarkdown('ask our [TiSlack community](http://tislack.org)', { link });
-    assert.match(html, /href="https:\/\/slack\.tidev\.io\/"/);
+    assert.match(html, /href="\/slack"/);
     assert.doesNotMatch(html, /tislack\.org/);
     assert.match(html, /ask our <a[^>]*>TiSlack community<\/a>/);
   });
 
-  test('repoints both spellings of the old Slack address', () => {
-    for (const href of ['http://tislack.org', 'https://tislack.org', 'https://tislack.org/']) {
-      assert.match(renderMarkdown(`[x](${href})`, { link }), /slack\.tidev\.io/, href);
+  test('repoints every spelling of the old Slack addresses', () => {
+    for (const href of [
+      'http://tislack.org',
+      'https://tislack.org',
+      'https://tislack.org/',
+      // Its replacement, lost with the foundation's domain. The 13.0.0 release
+      // notes link it.
+      'https://slack.tidev.io/',
+      'https://slack.tidev.io',
+    ]) {
+      const html = renderMarkdown(`[x](${href})`, { link });
+      assert.match(html, /href="\/slack"/, href);
+      assert.doesNotMatch(html, /tidev\.io|tislack/, href);
     }
+  });
+
+  test('writes the current tiapp.xml namespace into mirrored examples', () => {
+    const source = '```xml\n<ti:app xmlns:ti="http://ti.tidev.io">\n</ti:app>\n```';
+    const html = renderMarkdown(source, { link });
+    assert.match(html, /ti\.titaniumsdk\.com/);
+    assert.doesNotMatch(html, /tidev\.io/);
+    // A longer host that merely starts the same way is somebody else's.
+    assert.match(
+      renderMarkdown('`http://ti.tidev.io.example`', { link }),
+      /ti\.tidev\.io\.example/
+    );
   });
 
   test('does not mistake a relative reference for a retired one', () => {

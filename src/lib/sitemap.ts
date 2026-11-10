@@ -70,6 +70,11 @@ function site(): MetadataRoute.Sitemap {
     // TiDev's document, hosted here because this is where its readers are.
     // Yearly: it has not changed since it was written, and it is not meant to.
     { url: `${SITE_URL}/code-of-conduct`, changeFrequency: 'yearly', priority: 0.3 },
+    // The foundation's two pages, moved here when its own domain was lost.
+    // `/contribute/cla` joins them once it is more than a placeholder.
+    { url: `${SITE_URL}/donate`, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URL}/legal`, changeFrequency: 'yearly', priority: 0.2 },
+    { url: `${SITE_URL}/slack`, changeFrequency: 'yearly', priority: 0.4 },
     // The human page. `/registry/` with the slash is the JSON API, which
     // robots.txt disallows; see DISALLOW in lib/seo.
     { url: `${SITE_URL}/registry`, changeFrequency: 'monthly', priority: 0.3 },

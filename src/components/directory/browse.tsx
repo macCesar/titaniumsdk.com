@@ -8,7 +8,6 @@ import {
   SpecialtyChips,
   Where,
 } from './badges';
-import { ExternalIcon } from '@/components/ui/external-link';
 import { Select } from '@/components/ui/select';
 import { capture } from '@/lib/analytics';
 import {
@@ -137,9 +136,8 @@ export function Browse({ profiles }: { profiles: Profile[] }) {
       {!shown.length && (
         <p className="mt-8 text-sm text-text-muted">
           Nobody listed matches that. Try one filter at a time, or ask in{' '}
-          <a href="https://tidev.slack.com" className="text-link hover:underline">
+          <a href="/slack" className="text-link hover:underline">
             Slack
-            <ExternalIcon />
           </a>
           .
         </p>

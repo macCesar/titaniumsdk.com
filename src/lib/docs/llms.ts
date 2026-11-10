@@ -17,6 +17,7 @@ import {
   moduleIndex,
 } from './modules.ts';
 import { latestSdkVersion, MAIN, resolveVersion, sdkIndex, sdkType } from './registry.ts';
+import { currentTiNamespace } from './ti-namespace.ts';
 import { viewOf } from './type-view.ts';
 
 /**
@@ -590,6 +591,13 @@ export function modulesIndexMarkdown(): string {
  * name looks like a version.
  */
 export function markdownFor(path: string): string | undefined {
+  // The `.md` copies print registry text raw, where the HTML pages go through
+  // `renderMarkdown`, so the namespace rewrite it applies is applied here too.
+  const markdown = rawMarkdownFor(path);
+  return markdown === undefined ? undefined : currentTiNamespace(markdown);
+}
+
+function rawMarkdownFor(path: string): string | undefined {
   const clean = path.replace(/\/+$/, '') || '/';
 
   if (clean === '/modules') return modulesIndexMarkdown();

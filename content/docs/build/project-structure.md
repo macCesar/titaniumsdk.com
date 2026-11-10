@@ -102,7 +102,7 @@ which SDK builds it, and the settings that end up in the native manifests. Both
 project types use it unchanged.
 
 ```xml
-<ti:app xmlns:ti="http://ti.tidev.io">
+<ti:app xmlns:ti="http://ti.titaniumsdk.com">
 	<id>com.example.hello</id>
 	<name>Hello</name>
 	<version>1.0</version>

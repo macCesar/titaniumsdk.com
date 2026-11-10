@@ -67,9 +67,7 @@ export function SiteFooter() {
           <p className="text-sm text-text-subtle">
             Apache-2.0. Titanium is a registered trademark of{' '}
             <a
-              href="https://tidev.io"
-              target="_blank"
-              rel="noreferrer"
+              href="/legal"
               className="text-text-muted underline underline-offset-2 hover:text-link"
             >
               TiDev, Inc.
