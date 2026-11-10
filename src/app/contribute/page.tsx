@@ -151,6 +151,15 @@ export default function ContributePage() {
             Donations pay for engineer time, which is what keeps Titanium current with each new
             Android and iOS release.
           </p>
+          {/* `/donate` redirects here, so this section is also the donation
+              page. The non-profit status is what a donor checks first. */}
+          <p className="mt-3 max-w-3xl text-text-muted">
+            TiDev, Inc. is a registered 501(c)(3) non-profit. See{' '}
+            <a href="/legal" className="text-link hover:underline">
+              Legal
+            </a>{' '}
+            for the corporation&apos;s details.
+          </p>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
             {supportNav.map((item) => (
               <li

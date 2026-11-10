@@ -53,6 +53,9 @@ const OLD_POST = /^\/posts\/\d{4}\/([\w-]+)\.md$/;
  */
 const SLACK = '/slack';
 
+/** Where `/donate` redirects: the Donate section of `/contribute`. */
+const DONATE = '/contribute#donate';
+
 /**
  * A version's release notes here, or null when there is no page to send to.
  *
@@ -116,8 +119,10 @@ export function rewriteLink(href: string): string | null {
   const post = OLD_POST.exec(path);
   if (post) return `/blog/${post[1].replace(/_/g, '-')}`;
 
-  // `/donate` needs nothing: the archive wrote it root-relative, and since the
-  // foundation's domain was lost the page lives on this site.
+  // The archive wrote `/donate` root-relative. It is a redirect here, into the
+  // Donate section of `/contribute`, so the link goes straight there: one hop
+  // fewer, and `check:docs` reads pages rather than redirects.
+  if (path === '/donate') return DONATE;
 
   // Already somewhere real, but written with the domain in it: absolute links
   // send a preview deploy to production and hard-code a name the site may not

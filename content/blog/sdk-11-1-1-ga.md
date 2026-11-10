@@ -39,4 +39,4 @@ Therefore please test it on your apps and provide feedback. If you run into any 
 
 ## How can I support?
 
-If you like our work and want to support, think about a [donation](/donate) or to [contribute](/contribute) with your time and code.
+If you like our work and want to support, think about a [donation](/contribute#donate) or to [contribute](/contribute) with your time and code.

@@ -26,6 +26,8 @@ describe('unresolved', () => {
     // The archive's old post addresses, which `rewriteLink` maps onto this blog.
     assert.ok(unresolved('/posts/2022/release_sdk_11.md'));
     assert.ok(unresolved('/sponsor'));
+    // A redirect into `/contribute#donate`, not a page. Posts link the section.
+    assert.ok(unresolved('/donate'));
     assert.ok(unresolved('/guide/Alloy_Framework/Alloy_Guide/Alloy_PurgeTSS.html'));
   });
 

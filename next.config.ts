@@ -194,6 +194,22 @@ function legacyGuideRedirects() {
 }
 
 /**
+ * Short addresses for sections of a page.
+ *
+ * `/donate` is the address people type for a non-profit, and the one the
+ * imported blog posts were written against. It was briefly a page of its own,
+ * ported from the foundation's old site, but it showed the same two donation
+ * routes `/contribute` opens with. One place to keep current beats two, so the
+ * address stays and points at that section.
+ *
+ * Permanent: the page is not coming back, and the anchor is `/contribute`'s own
+ * heading id, which nothing else moves.
+ */
+const shortcutRedirects = [
+  { source: '/donate', destination: '/contribute#donate', permanent: true },
+];
+
+/**
  * The public registry API (TI-55).
  *
  * Open CORS because reads are the entire surface and the CLI is not the only
@@ -276,6 +292,7 @@ const nextConfig: NextConfig = {
       ...docsVersionRedirects(),
       ...legacyApiRedirects(),
       ...legacyGuideRedirects(),
+      ...shortcutRedirects,
     ];
 
     // A surviving `latest` in a legacy destination is the two-hop chain the
