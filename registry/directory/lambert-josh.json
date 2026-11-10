@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "id": "lambert-josh",
+  "name": "Josh Lambert",
+  "kind": "individual",
+  "summary": "Need a Titanium app built, rescued, or kept running? My team and I have shipped dozens of iOS and Android apps, and I take over existing codebases and SDK upgrades too. Proudly based in Alabama (War Eagle! 🦅), serving customers across the USA and Canada. Let's talk about your project.",
+  "location": "Centreville, Alabama, serving the USA and Canada",
+  "timezone": "America/Chicago",
+  "availability": ["part-time", "contract"],
+  "specialties": ["alloy", "cross-platform-ui", "app-store-release", "sdk-upgrades"],
+  "skills": ["New app builds", "Legacy app rescue", "Long-term support", "API integration", "PurgeTSS"],
+  "contact": {
+    "label": "Tell me about your project",
+    "url": "https://centrevilletech.com/contact/"
+  },
+  "links": [
+    { "label": "Centreville Tech", "url": "https://centrevilletech.com" },
+    { "label": "Mobile apps", "url": "https://centrevilletech.com/services/mobile-app-development/" },
+    { "label": "Shipped work", "url": "https://centrevilletech.com/work/" },
+    { "label": "GitHub", "url": "https://github.com/joshualambert" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/thejoshlambert/" },
+    { "label": "X", "url": "https://x.com/zettageek" }
+  ],
+  "expiresAt": "2027-02-08",
+  "neverExpires": false,
+  "placeholder": false
+}
