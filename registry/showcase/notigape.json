@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "notigape",
+  "name": "NotiGAPE",
+  "subtitle": "News and live radio for Tamaulipas and the Rio Grande Valley",
+  "platforms": ["iphone", "ipad", "android-phone", "android-tablet"],
+  "sdkVersion": "13.4.1",
+  "description": "NotiGAPE is Grupo GAPE's official news and radio app for Tamaulipas, Mexico and the Rio Grande Valley in Texas. Browse stories by region or topic, adjust article text size, save stories for later and explore photo galleries. News alerts can be tailored to the regions and categories you follow.\n\nListen to live FM, HD and AM stations, check program schedules and see what's on air. A mini-player keeps radio controls available while browsing, and playback continues in the background. Stations are also accessible through CarPlay and Android Auto.\n\nLocal information includes weather, the US dollar exchange rate and reported wait times at international bridges, with open lanes and crossing details. The app is available in Spanish.",
+  "appStore": "https://apps.apple.com/mx/app/notigape/id423881207",
+  "playStore": "https://play.google.com/store/apps/details?id=com.grupogapeandroid.notigape&hl=es_MX",
+  "placeholder": false
+}
