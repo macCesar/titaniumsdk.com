@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "snap-gym",
+  "name": "SNAP Gym",
+  "subtitle": "Membership and class bookings for SNAP Gym members",
+  "platforms": ["iphone"],
+  "sdkVersion": "13.2.0.GA",
+  "description": "SNAP Gym is the official app for members of SNAP Gym Sport Center. Members can check their membership status and plan details, book classes and manage reservations from their iPhone.\n\nThe app provides a QR code for check-in at reception, video workout routines, class reminders and gym announcements. Members can also review their attendance history and invite friends through the referral program.\n\nThe app is available in Spanish.",
+  "appStore": "https://apps.apple.com/mx/app/snap-gym/id6778501142",
+  "placeholder": false
+}
