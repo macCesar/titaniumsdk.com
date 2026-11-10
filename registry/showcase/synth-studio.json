@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "synth-studio",
+  "name": "Synth Studio",
+  "subtitle": "A sound synthesis lab powered by Titanium SDK",
+  "platforms": ["iphone", "ipad", "android-phone", "android-tablet"],
+  "sdkVersion": "14.0.0",
+  "description": "Synth Studio is an interactive sound synthesis lab powered by ti.synthengine, the open-source native audio module for Titanium SDK. Play the keyboard, shape sounds and try 470 factory presets and examples, from instrument sounds to retro game effects and interface feedback. All audio is synthesized in real time, without recorded instrument samples.\n\nExplore six sound sources, including editable wavetables, with ADSR envelopes, resonant filters, FM synthesis and effects such as chorus, delay and reverb. The native engine supports up to 32 voices and four sequence tracks, with patterns up to 512 steps.\n\nSave personal presets, compare edits with A/B memories and share runnable JavaScript examples for Titanium apps. The interface and factory catalog are available in English and Spanish.",
+  "appStore": "https://apps.apple.com/us/app/synth-studio/id6829943444?l=en-US",
+  "playStore": "https://play.google.com/store/apps/details?id=mx.codigomovil.synthstudio&hl=en",
+  "placeholder": false
+}
