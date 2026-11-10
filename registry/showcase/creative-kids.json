@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "creative-kids",
+  "name": "Creative Kids",
+  "subtitle": "Drawing and coloring for children",
+  "platforms": ["iphone", "ipad", "android-phone", "android-tablet"],
+  "sdkVersion": "14.0.0",
+  "description": "Creative Kids is a drawing and coloring app for children. Pick a drawing from the collections or start with a blank page. Choose colors and brush tips, adjust the stroke width and background, and use the eraser or undo to make corrections.\n\nDrawings are saved on the device so children can open them again and keep painting. They can also play back their strokes to see how they made a drawing.\n\nAn internet connection is needed to download collections and updates. Once downloaded, the drawings are available to color offline. The app has English and Spanish text.\n\nIllustrations: Freepik / Magnific.",
+  "appStore": "https://apps.apple.com/us/app/creative-kids-coloring/id6812426688?l=en-US",
+  "playStore": "https://play.google.com/store/apps/details?id=mx.codigomovil.creativekids&hl=en",
+  "placeholder": false
+}
