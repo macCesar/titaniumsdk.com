@@ -133,7 +133,13 @@ const RETIRED_DOMAINS = ['appcelerator.com', 'appcelerator.org'];
  * `slack.tidev.io` replaced it - the SDK's own choice, in `titanium-sdk`
  * commit 81d3f4a - and then went the same way when the foundation lost
  * `tidev.io`. Both now go to this site's `/slack`, which offers the invite
- * and the login side by side. The SDK 13.0.0 release notes link the second one.
+ * and the login side by side.
+ *
+ * Nothing in the registry links either host today: the release notes are
+ * rewritten as they are captured, in `capture-release-notes.ts`. This stays as
+ * the guard for what is re-synced verbatim - module READMEs and apidoc - since
+ * TiDev's own repositories still link `slack.tidev.io` and a sync would bring
+ * the link back without anything failing.
  *
  * Not the `tidev.slack.com` workspace root: a reader following this link from
  * the documentation is more likely to be looking for a way in than to be a

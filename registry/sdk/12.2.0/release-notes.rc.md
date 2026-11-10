@@ -24,11 +24,11 @@ and planned to released by September this year. Using Titanium SDK 12.2.0.RC and
 currently bundled apps in the iOS 17 Simulator, but also target the iOS 17 platform by default, making sure that your apps
 will run smoothly when the release comes out soon.
 
-In addition, if you are interested in new APIs that haven't been covered, yet, make sure to let us know via [TiSlack](https://tislack.org)
+In addition, if you are interested in new APIs that haven't been covered, yet, make sure to let us know via [TiSlack](/slack)
 and the community will try to add them for you.
 
 Finally, we encourage all developers to their apps sooner than later to prevent disruptions and platform specific bugs. Also, please make sure
-to report all issues via [TiSlack](https://tislack.org), so we can fix them for the GA version of Titanium SDK 12.2.0, which is planned
+to report all issues via [TiSlack](/slack), so we can fix them for the GA version of Titanium SDK 12.2.0, which is planned
 for September as well.
 
 ## Community Credits

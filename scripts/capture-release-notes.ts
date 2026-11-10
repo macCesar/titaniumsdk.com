@@ -107,10 +107,17 @@ console.log(
  * replaced exactly those URLs, so renaming it would make the sentence describe
  * the opposite of what happened. A blanket substitution would have corrupted a
  * quoted commit subject to say something untrue.
+ *
+ * Links to the Slack join page go to this site's `/slack`. Both hosts the notes
+ * use are gone: `tislack.org` lapsed, and `slack.tidev.io` went with the
+ * foundation's domain. Only link targets are rewritten, for the same reason as
+ * above: 11.0.0's "replace tislack.org with slack.tidev.io" is a commit subject
+ * saying what that commit did, and stays as written.
  */
 function rewrite(body: string): string {
   return (
     body
+      .replace(/\]\(https?:\/\/(?:slack\.tidev\.io|tislack\.org)\/?\)/g, '](/slack)')
       .replace(
         /https:\/\/github\.com\/tidev\/titanium_mobile\b/g,
         'https://github.com/tidev/titanium-sdk'
