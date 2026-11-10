@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "haven-today",
+  "name": "Haven Today",
+  "subtitle": "Daily programs and devotionals from Haven Ministries",
+  "platforms": ["iphone", "ipad", "android-phone"],
+  "sdkVersion": "13.4.1.GA",
+  "description": "Haven Today is the official app of Haven Ministries, a source of daily Christ-centered programs and devotionals.\n\nListeners can browse programs by topic or Bible passage and follow along with the passage on screen while a program plays. The app also carries the daily Anchor devotional and the day's Bible in a Year reading, and makes it easy to share a program with friends.\n\nIt runs on iPhone, iPad and Android phones.",
+  "website": "https://haventoday.org/",
+  "appStore": "https://apps.apple.com/us/app/haven-today/id432343055",
+  "playStore": "https://play.google.com/store/apps/details?id=com.subsplash.thechurchapp.haventoday",
+  "placeholder": false
+}
