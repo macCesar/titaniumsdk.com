@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "my-nhs",
+  "name": "My NHS",
+  "subtitle": "Daily life at Northport Health communities",
+  "platforms": ["iphone", "android-phone"],
+  "sdkVersion": "13.4.0.GA",
+  "description": "My NHS is the official app for residents of NHS (Northport Health) health and rehabilitation facilities in the United States, and for their families. It is not the UK's National Health Service.\n\nResidents can see the activity calendar, the week's meals, the management team at their facility with one-tap calling, and announcements from staff. Push notifications carry updates from the facility, and one button gives directions back after an errand. Family members use it to keep up with daily life at their loved one's community.\n\nBuilt with Titanium and on the App Store since 2017.",
+  "website": "https://www.nhsmanagement.com/",
+  "appStore": "https://apps.apple.com/us/app/my-nhs-northport-health/id1209345477",
+  "playStore": "https://play.google.com/store/apps/details?id=com.signpilot.mynhs",
+  "placeholder": false
+}
