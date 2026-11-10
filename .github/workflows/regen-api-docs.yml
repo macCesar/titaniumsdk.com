@@ -103,14 +103,84 @@ jobs:
       - name: Validate against the schemas
         run: node scripts/validate-registry.ts
 
+      # The rest of an SDK release's footprint on the site, in the order it has
+      # to happen (TI-95). Each of these was a manual step, and each one left
+      # undone broke something: the capture missing fails `docs:compat:check`
+      # in CI on every pull request, and the snapshot missing leaves the guides
+      # labelled with the previous major.
+      #
+      # The capture reads the commit the compile above just recorded in the
+      # version's metadata.json, so it has to come after it. `main` already has
+      # a capture and is the one tree that moves, so it is forced; a released
+      # version is captured once.
+      - name: Capture the toolchain and regenerate the compatibility page
+        if: steps.source.outputs.kind == 'sdk'
+        run: |
+          set -euo pipefail
+          if [ "$TARGET_VERSION" = main ]; then
+            pnpm registry:toolchain main --force
+          else
+            pnpm registry:toolchain "$TARGET_VERSION"
+          fi
+          pnpm docs:compat
+
+      # The guides are versioned by SDK major (TI-59). The first GA of a newer
+      # major is the moment the current guides become the previous major's
+      # archive, so it is cut here rather than left to someone remembering.
+      # snapshot-docs.ts refuses a major that is not newer than the current
+      # one, so the comparison is made first and a patch or minor is a no-op.
+      - name: Snapshot the guides for a new major
+        id: snapshot
+        if: steps.source.outputs.kind == 'sdk' && env.TARGET_VERSION != 'main'
+        run: |
+          set -euo pipefail
+          major="${TARGET_VERSION%%.*}"
+          current=$(node -p "require('./content/doc-versions.json').current.replace(/^v/, '')")
+          if [ "$major" -gt "$current" ]; then
+            pnpm docs:snapshot "v$major"
+            echo "cut=true" >> "$GITHUB_OUTPUT"
+            echo "Snapshotted the v$current guides; v$major is current." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "v$major is not newer than the current guides (v$current); no snapshot."
+          fi
+
+      # A snapshot moves every guide page's address, so the whole content
+      # pipeline is run over the result before it is committed, rather than
+      # finding out from a failed deploy.
+      - name: Check the guides
+        if: steps.snapshot.outputs.cut == 'true'
+        run: pnpm check:docs
+
       - name: Summary
         run: echo "${{ steps.regen.outputs.summary }}" >> "$GITHUB_STEP_SUMMARY"
 
       # Only when the compile actually changed bytes. docgen holds generatedAt
       # steady on an unchanged run, so there is no timestamp-only diff to commit.
+      # The compile reports whether it changed anything, but the capture, the
+      # compatibility partials and the snapshot can change files when it did
+      # not: a release that moves only a manifest compiles to the same bytes
+      # and still has a new toolchain to state. So what to commit is read off
+      # the working tree, after everything has run.
+      - name: Work out what to commit
+        id: changes
+        env:
+          REGEN_PATHS: ${{ steps.regen.outputs.paths }}
+        run: |
+          set -euo pipefail
+          paths="$REGEN_PATHS"
+          for p in content/docs/_partials content/doc-versions.json content/docs-archive; do
+            [ -e "$p" ] && paths="$paths $p"
+          done
+          if [ -n "$(git status --porcelain -- $paths)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "paths=$paths" >> "$GITHUB_OUTPUT"
+
       - name: Commit
         id: commit
-        if: steps.regen.outputs.changed == 'true'
+        if: steps.changes.outputs.changed == 'true'
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'Regen API docs for ${{ env.SOURCE_REPO }}@${{ env.TARGET_VERSION }}'
@@ -118,7 +188,9 @@ jobs:
           # The manifest in the first names blobs that live in the second, so
           # committing only the version directory publishes dangling
           # references — see the note in regen.ts.
-          file_pattern: ${{ steps.regen.outputs.paths }}
+          # The version directory and the shared pool beside it, plus whatever the
+          # capture, the compatibility page and the snapshot wrote.
+          file_pattern: ${{ steps.changes.outputs.paths }}
 
       # The commit is selective, so it can silently publish less than the regen
       # produced. That is not hypothetical: `file_pattern` was scoped to the
@@ -130,17 +202,17 @@ jobs:
       # Anything left in the working tree after the commit is something the
       # pattern did not cover.
       - name: Nothing left behind
-        if: steps.regen.outputs.changed == 'true'
+        if: steps.changes.outputs.changed == 'true'
         run: |
-          left=$(git status --porcelain -- registry/)
+          left=$(git status --porcelain -- registry/ content/)
           if [ -n "$left" ]; then
             echo "::error::the commit did not include everything the regen wrote:"
             echo "$left"
-            echo 'Widen the `paths` output in scripts/docgen/regen.ts to cover it.' >&2
+            echo 'Widen the `paths` output in scripts/docgen/regen.ts, or the list in "Work out what to commit", to cover it.' >&2
             exit 1
           fi
           echo "Every file the regen wrote was committed." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Report no-op
-        if: steps.regen.outputs.changed != 'true'
+        if: steps.changes.outputs.changed != 'true'
         run: echo "No content change — nothing committed." >> "$GITHUB_STEP_SUMMARY"

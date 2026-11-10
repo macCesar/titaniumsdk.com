@@ -1,12 +1,30 @@
 name: Notify API Docs
 
-# Called by each source repo when its apidoc/ changes or it publishes a release.
+# Called by each source repo when its apidoc/ changes or it publishes a release,
+# and by titanium-sdk's release workflow once a GA release is approved.
 #
 # The payload contract lives here rather than in 17 copies, so changing it is one
 # edit instead of seventeen PRs. The old pipeline had no payload at all, which is
 # why the regen had to check out every source repo to find out what changed.
 on:
   workflow_call:
+    inputs:
+      # Both optional. A caller reacting to a push or a release event leaves
+      # them out and they are read off the event. titanium-sdk's release
+      # workflow passes them, because its event is a workflow_dispatch: the
+      # release it creates uses the run's GITHUB_TOKEN, and GitHub starts no
+      # workflow from an event that token caused, so `release: published`
+      # never fires for an SDK release and the version has to be told.
+      ref:
+        description: 'Branch or tag to compile, e.g. 14_0_0_GA. Defaults to the triggering ref.'
+        required: false
+        type: string
+        default: ''
+      version:
+        description: 'Registry version to write, `main` or X.Y.Z. Defaults to one read off the event.'
+        required: false
+        type: string
+        default: ''
     secrets:
       dispatch-token:
         description: 'Token with write access to tidev/titaniumsdk.com'
@@ -21,12 +39,31 @@ jobs:
       # this reads the source repo and ref without the caller passing them.
       - name: Work out which registry version this is for
         id: target
+        env:
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+          TAG: ${{ github.event.release.tag_name }}
+          REF: ${{ inputs.ref || github.ref_name }}
+          GIVEN: ${{ inputs.version }}
         run: |
-          if [ "${{ github.event_name }}" = 'release' ]; then
+          set -euo pipefail
+          skip=false
+          if [ -n "$GIVEN" ]; then
+            version="$GIVEN"
+          elif [ "$EVENT" = 'release' ] && [ "$REPO" = 'tidev/titanium-sdk' ]; then
+            # SDK tags are 14_0_0_GA, 14_0_0_RC, 14_0_0_Beta. The registry keeps
+            # GA versions only, as X.Y.Z, so a GA tag maps and the rest are
+            # skipped rather than compiled into a directory nothing reads.
+            if [[ "$TAG" =~ ^([0-9]+)_([0-9]+)_([0-9]+)_GA$ ]]; then
+              version="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}"
+            else
+              skip=true
+              version=''
+            fi
+          elif [ "$EVENT" = 'release' ]; then
             # Module release tags look like v7.3.1-ios; the registry wants 7.3.1.
             # A fuller mapping belongs with the release asset parser (TI-15).
-            version="${{ github.event.release.tag_name }}"
-            version="${version#v}"
+            version="${TAG#v}"
             version="${version%-ios}"
             version="${version%-android}"
             version="${version%.GA}"
@@ -34,13 +71,28 @@ jobs:
             # `main` is the one mutable tree; released versions are written once.
             version=main
           fi
+
+          # The same rule regen.ts enforces, checked here too so a bad mapping
+          # fails in the caller, where whoever released is looking.
+          if [ "$skip" = false ] && ! [[ "$version" =~ ^(main|[0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            echo "::error::'$version' is not a registry version (main or X.Y.Z)"
+            exit 1
+          fi
+
           echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "Dispatching ${{ github.repository }} @ $version" >> "$GITHUB_STEP_SUMMARY"
+          echo "ref=$REF" >> "$GITHUB_OUTPUT"
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
+          if [ "$skip" = true ]; then
+            echo "Not dispatching: $REPO $TAG is not a GA release." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Dispatching $REPO @ $REF as $version" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       # `sdk` is what a module's references into Titanium.* resolve against, and
       # it is stated rather than left to a default: a module's compiled links
       # point at one SDK's pages, so which one is part of the request.
       - name: Repository dispatch
+        if: steps.target.outputs.skip != 'true'
         uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.dispatch-token }}
@@ -49,7 +101,7 @@ jobs:
           client-payload: |
             {
               "repo": "${{ github.repository }}",
-              "ref": "${{ github.ref_name }}",
+              "ref": "${{ steps.target.outputs.ref }}",
               "version": "${{ steps.target.outputs.version }}",
               "sdk": "main"
             }

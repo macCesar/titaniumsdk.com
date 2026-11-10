@@ -51,6 +51,20 @@ if (!repo || !checkoutArg) {
   process.exit(1);
 }
 
+/**
+ * The version names a directory, so anything else is refused before it is one.
+ *
+ * Every SDK and module version in the registry is `main` or `X.Y.Z`. A release
+ * tag is not a version: titanium-sdk tags `14_0_0_GA`, and before this check a
+ * dispatch carrying the tag compiled happily into `registry/sdk/14_0_0_GA`,
+ * which nothing reads. `notify-api-docs.yml` does the mapping; this is what
+ * makes a mapping that misses fail instead of publishing nowhere.
+ */
+if (version !== MUTABLE && !/^\d+\.\d+\.\d+$/.test(version)) {
+  console.error(`--version must be ${MUTABLE} or X.Y.Z, not "${version}".`);
+  process.exit(1);
+}
+
 const root = fileURLToPath(new URL('../..', import.meta.url));
 const checkout = resolve(checkoutArg);
 
