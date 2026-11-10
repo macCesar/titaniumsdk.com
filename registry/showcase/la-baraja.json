@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "la-baraja",
+  "name": "Mexican Loteria - La Baraja",
+  "subtitle": "A Mexican Loteria caller with over 40 decks",
+  "platforms": ["iphone", "ipad", "android-phone", "android-tablet"],
+  "sdkVersion": "14.0.0",
+  "description": "La Baraja calls the cards for Mexican Loteria, the traditional picture-card game played at family gatherings, parties and community events. Cards are spoken aloud in Spanish, automatically or at your own pace, with pause, resume and a history of previous draws.\n\nChoose from more than 40 decks, including traditional designs, Day of the Dead, Christmas, Tarot and Kawaii. Some decks require watching ads to download. An optional account lets you restore unlocked decks on another phone.\n\nThe animated bingo cage supports boards that repeat the same card: choose which cards to include and how many copies of each, then draw them at random. A name and number spinner helps choose the caller or order of play, and random card flips settle ties. The app also offers custom printed boards for events.",
+  "appStore": "https://apps.apple.com/us/app/mexican-loteria-la-baraja/id6450378623?l=en-US",
+  "playStore": "https://play.google.com/store/apps/details?id=mx.codigomovil.barajaloteria&hl=en",
+  "placeholder": false
+}
