@@ -81,9 +81,13 @@ describe('legacy guide redirects', () => {
   test('every GA release note reaches its built page', () => {
     const ga = audit.filter((p) => /\d+\.\d+\.\d+[._]GA_Release_Note\.md$/.test(p.path));
     const bySource = new Map(map.rules.map((r) => [r.source, r.destination]));
-    assert.equal(ga.length, versionsWithNotes().length, 'GA notes and built pages disagree');
+    // Every note the wiki had still has a page. Not the reverse: releases after
+    // the wiki was frozen get notes here (titanium-sdk's release workflow writes
+    // them) and were never on the wiki, so a count of the two cannot match.
+    const built = new Set(versionsWithNotes());
     for (const page of ga) {
       const version = page.path.match(/(\d+\.\d+\.\d+)[._]GA_Release_Note\.md$/)![1];
+      assert.ok(built.has(version), `the wiki's ${version} GA note has no built page`);
       assert.equal(bySource.get(page.url), `/docs/sdk/${version}/release-notes`);
     }
   });

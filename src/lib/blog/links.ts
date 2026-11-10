@@ -3,6 +3,7 @@ import { allPaths } from '../docs/ia.ts';
 import { renderMarkdown } from '../docs/markdown.ts';
 import { latestSdkVersion, sdkToolchain, sdkTypeNames, sdkVersions } from '../docs/registry.ts';
 import { releaseNote } from '../docs/release-notes.ts';
+import { PLACEHOLDER } from './placeholder.ts';
 import { activeCategories, allPosts, allTags, pageCount } from './posts.ts';
 import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -218,6 +219,16 @@ export function validatePosts(): Problem[] {
 
   for (const post of allPosts()) {
     const where = `content/blog/${post.slug}.md`;
+
+    // A generated release announcement keeps its gaps marked until somebody
+    // writes them. A draft may; a published post may not.
+    const visible = [post.title, post.description, ...post.authors, post.body, post.social ?? ''];
+    if (!post.draft && visible.some((text) => text.includes(PLACEHOLDER))) {
+      problems.push({
+        where,
+        message: `still contains ${PLACEHOLDER} placeholders; fill them in, or keep draft: true`,
+      });
+    }
 
     if (LEGACY_GUIDE.test(post.body)) {
       problems.push({

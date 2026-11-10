@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "assets": "node scripts/sync-doc-assets.ts",
+    "blog:release": "node scripts/new-release-post.ts",
     "audit:guides": "node scripts/audit-legacy-guides.ts",
     "build": "node scripts/prune-builds.ts && node scripts/sync-doc-assets.ts && node scripts/sync-registry-images.ts && node scripts/generate-compat.ts && node scripts/generate-search-index.ts && node scripts/generate-symbol-index.ts && node scripts/check-docs.ts && next build",
     "capture:shots": "node scripts/capture-screenshots.ts",
