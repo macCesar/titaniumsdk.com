@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "streamline-scout",
+  "name": "Streamline Scout",
+  "subtitle": "Tower cameras and account tools for Streamline Internet",
+  "platforms": ["iphone", "android-phone"],
+  "sdkVersion": "13.4.0.GA",
+  "description": "Streamline Scout is the companion app for Streamline Internet, a local wireless internet provider based in LaBelle, Florida, serving Hendry County and Golden Gate Estates.\n\nIt streams live views from cameras mounted on Streamline's towers in Felda, LaBelle and Port LaBelle and shows which towers are online. Customers can report an outage with one tap, chat with local support, and see their plan and login details.\n\nThe app is for active Streamline customers and the first responders in those communities. Customers sign in with the phone number on their account.",
+  "website": "https://streamlineisp.com/",
+  "appStore": "https://apps.apple.com/us/app/streamline-scout/id6769928215",
+  "playStore": "https://play.google.com/store/apps/details?id=com.streamlineisp.scout",
+  "placeholder": false
+}
