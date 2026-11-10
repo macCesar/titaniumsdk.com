@@ -1,7 +1,7 @@
 # The blog split, and the foundation's pages
 
 Settled in [TI-68](https://linear.app/titanium-sdk/issue/TI-68). Read this before
-writing a post, or before touching `content/blog`, `/donate`, `/legal` or
+writing a post, or before touching `content/blog`, `/contribute`, `/legal` or
 `/contribute/cla`.
 
 ## What changed
@@ -14,7 +14,7 @@ link out to for the foundation moved here:
 
 | Page                               | What it is                                          |
 | ---------------------------------- | --------------------------------------------------- |
-| `/donate`                          | The two donation routes, from `supportNav`.         |
+| `/contribute#donate`               | The two donation routes. `/donate` redirects here.  |
 | `/legal`                           | The corporation, licences, CLA and attributions.    |
 | `/contribute/cla`                  | The CLA, and a placeholder until signing is ported. |
 | `/contribute/cla/check/<username>` | The status check `tidev-cla-action` calls.          |

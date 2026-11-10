@@ -512,7 +512,7 @@ export default function Home() {
                   paragraph beside this names TiDev as a non-profit, and giving
                   to it is the one thing left to do about that here. */}
               <a
-                href="/donate"
+                href="/contribute#donate"
                 className="inline-block rounded-md border border-border px-4 py-2 text-sm transition-colors hover:border-border-strong hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               >
                 Donate

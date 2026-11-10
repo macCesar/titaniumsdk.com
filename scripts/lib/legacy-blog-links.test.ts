@@ -94,8 +94,9 @@ describe('rewriteLink', () => {
     assert.equal(rewriteLink('/slack'), null);
   });
 
-  test('leaves donations on this site', () => {
-    assert.equal(rewriteLink('/donate'), null);
+  test('sends donations to the Donate section of /contribute', () => {
+    assert.equal(rewriteLink('/donate'), '/contribute#donate');
+    assert.equal(rewriteLink('/contribute#donate'), null);
   });
 
   test('maps an old tidev.io post path onto this blog', () => {

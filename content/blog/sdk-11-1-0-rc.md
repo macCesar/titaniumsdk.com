@@ -37,4 +37,4 @@ As this is a Release Candidate Version, it's not meant to be used for production
 
 ## How can I support?
 
-If you like our work and want to support, think about a [donation](/donate) or to [contribute](/contribute) with your time and code.
+If you like our work and want to support, think about a [donation](/contribute#donate) or to [contribute](/contribute) with your time and code.
