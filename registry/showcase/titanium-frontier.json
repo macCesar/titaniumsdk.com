@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "titanium-frontier",
+  "name": "Titanium Frontier",
+  "subtitle": "Space combat with inertia-based flight",
+  "platforms": ["iphone", "ipad", "android-phone", "android-tablet"],
+  "sdkVersion": "14.0.0",
+  "description": "Titanium Frontier is a space shooter where you control your ship's thrust and rotation to dodge asteroids and fight enemy ships. Arcade has waves, upgrades and bosses across six visual styles. Expedition takes you through six sectors to unlock ships with different handling. Five Worlds missions ask you to recover scrap, defend a planet, mine resources, chain destructions or navigate gravitational anomalies.\n\nPlay with touch buttons, a virtual joystick or a compatible controller. Choose from three difficulty levels and resume runs from saved checkpoints. The game works offline, with English and Spanish text and optional spatial audio for headphones.\n\nBuilt with Titanium SDK, ti.game and TiSynthEngine.",
+  "appStore": "https://apps.apple.com/us/app/titanium-frontier/id6823510800?l=en-US",
+  "playStore": "https://play.google.com/store/apps/details?id=mx.codigomovil.titaniumasteroids&hl=en",
+  "placeholder": false
+}
