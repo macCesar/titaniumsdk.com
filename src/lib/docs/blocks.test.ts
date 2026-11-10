@@ -236,6 +236,12 @@ The two-tab template on an Android emulator.
 :::
 `;
 
+  test('draws nothing when parked in a comment', () => {
+    const html = render(`Before.\n\n<!-- Parked.\n${MISSING}\n-->\n\nAfter.`);
+    assert.doesNotMatch(html, /missing|:::/);
+    assert.match(html, /<p>Before\.<\/p>\s*<p>After\.<\/p>/);
+  });
+
   test('draws a box the shape of the picture', () => {
     const html = render(MISSING);
     assert.match(html, /<figure class="missing"/);

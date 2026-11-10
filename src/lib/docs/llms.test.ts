@@ -50,6 +50,22 @@ describe('flattenBlocks', () => {
     assert.match(out, /@tab x/);
   });
 
+  test('drops a parked screenshot brief, as the page does', () => {
+    const out = flattenBlocks(
+      'Before.\n\n<!-- Parked.\n\n:::missing 16:9\n\nA shot.\n\n:::\n\n-->\n\nAfter.'
+    );
+    assert.equal(out, 'Before.\n\nAfter.');
+  });
+
+  test('drops a one-line comment', () => {
+    assert.equal(flattenBlocks('<!-- Generated. -->\n\nBody.'), 'Body.');
+  });
+
+  test('keeps a comment inside fenced code', () => {
+    const out = flattenBlocks('```xml\n<!-- app/views/index.xml -->\n<Alloy/>\n```');
+    assert.match(out, /<!-- app\/views\/index\.xml -->/);
+  });
+
   test('turns cards into a list', () => {
     const out = flattenBlocks(':::cards\n\n@card [Setup](/docs/setup)\n\n:::');
     assert.equal(out, '- [Setup](/docs/setup)');

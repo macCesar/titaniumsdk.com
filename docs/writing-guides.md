@@ -377,6 +377,29 @@ Use one rather than leaving a gap. A gap loses the fact that a picture was
 wanted; a stale screenshot is worse than either. Outstanding ones are tracked in
 TI-78.
 
+**Park one nobody can take yet** by wrapping it in an HTML comment, so the brief
+stays where the picture goes without a crossed box on the page:
+
+```md
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+Xcode's Manage Certificates sheet, listing an Apple Development certificate.
+
+:::
+
+-->
+```
+
+The sanitizer drops the comment from the page, and `flattenBlocks` drops it
+from `/llms-full.txt`. `grep -rn "Parked under TI-78" content/docs` lists them.
+
+**Not everything that wants a picture wants a screenshot.** Code in an editor is
+code: show the files as labelled code blocks, which are searchable, copyable
+and follow the reader's theme. An SVG of code is none of those, and through
+`<img>` it cannot follow the site's theme toggle.
+
 ### Platform-scoped source
 
 `:::only` removes a block before rendering, based on the page's `platforms`. It

@@ -81,6 +81,18 @@ that blob until you save it somewhere. Write it to
 
 Close the camera with `Ti.Media.hideCamera()` when you dismiss it yourself.
 
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+Two Android screens side by side, each cropped to a band rather than shown
+whole: the camera open from the example above with the shutter visible, and
+then the captured photo in the 200x200 ImageView the success callback adds.
+
+:::
+
+-->
+
 ## The photo library
 
 ```js
@@ -139,13 +151,6 @@ A `VideoPlayer` is a view, so it lays out like any other and defaults to
 filling its parent. Release it when the window closes: it holds a decoder, and
 leaving it alive costs memory that the platform will eventually take back by
 killing the app.
-
-:::missing 9:16
-
-The camera overlay open on an Android emulator with the shutter visible, and
-below it the captured photo shown in an ImageView on the same screen.
-
-:::
 
 ## Next
 

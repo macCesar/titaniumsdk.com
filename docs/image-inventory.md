@@ -15,62 +15,75 @@ once done, and that marker is the detail behind the summary.
 
 ## Status
 
-Ten images are shipped, all light theme, all produced by
-`scripts/capture-screenshots.ts` and reproducible with it.
+As of 2026-11-09. Twelve images are shipped. Ten are light theme, produced by
+`scripts/capture-screenshots.ts` and reproducible with it; #8 and #12 were
+taken by hand. No guide page shows a crossed box any more: everything still
+wanted is parked.
 
-| Group                       | Shipped | Left                                                      |
-| --------------------------- | ------- | --------------------------------------------------------- |
-| Guides, marked `:::missing` | 5 of 7  | #4, #6                                                    |
-| Guides, tooling             | 0 of 7  | #8, #9, #10, and three `ti info` shots that want a decision |
-| Guides, unmarked but wanted | 5 of 10 | #18 to #22                                                |
-| API reference               | 0 of 80 | all of it, and it lands in `tidev/titanium-sdk`           |
+| Group         | Shipped | Replaced by text | Cancelled | Parked                     |
+| ------------- | ------- | ---------------- | --------- | -------------------------- |
+| Guides        | 12      | #18              | #9, #10   | #4, #6, #19, #20, #21, #22 |
+| API reference | 0 of 80 | -                | out of scope for the guides; it lands in `tidev/titanium-sdk` | - |
 
 ### Shipped
 
-| #   | Page                                | File                             |
-| --- | ----------------------------------- | -------------------------------- |
-| 1   | `build/ui/layout` precedence        | `layout-precedence-ios.png`      |
-| 2   | `build/ui/lists`                    | `list-view.png`                  |
-| 3   | `build/ui/platform-conventions`     | `back-affordance.png`            |
-| 5   | `build/notifications`               | `notification-shade-android.png` |
-| 7   | `build/location`                    | `map-callout-ios.png`            |
-| 13  | `build/first-app` "Run it"          | `template-app.png`               |
-| 14  | `build/first-app` "Change something" | `first-app-tap-ios.png`         |
-| 15  | `build/ui/layout` three modes       | `layout-modes-ios.png`           |
-| 16  | `build/ui/layout` horizontal        | `horizontal-wrap-ios.png`        |
-| 17  | `build/ui/index`                    | `one-codebase.png`               |
+| #   | Page                                 | File                             |
+| --- | ------------------------------------ | -------------------------------- |
+| 1   | `build/ui/layout` precedence         | `layout-precedence-ios.png`      |
+| 2   | `build/ui/lists`                     | `list-view.png`                  |
+| 3   | `build/ui/platform-conventions`      | `back-affordance.png`            |
+| 5   | `build/notifications`                | `notification-shade-android.png` |
+| 7   | `build/location`                     | `map-callout-ios.png`            |
+| 8   | `setup/ide-integration` VS Code      | `vscode-titanium-view.png`       |
+| 12  | `_partials/verify`, all three setup pages | `ti-info-macos.png`         |
+| 13  | `build/first-app` "Run it"           | `template-app.png`               |
+| 14  | `build/first-app` "Change something" | `first-app-tap-ios.png`          |
+| 15  | `build/ui/layout` three modes        | `layout-modes-ios.png`           |
+| 16  | `build/ui/layout` horizontal         | `horizontal-wrap-ios.png`        |
+| 17  | `build/ui/index`                     | `one-codebase.png`               |
 
-### Left, and what each one needs
+#8 and #12 are the two dark-theme images on the site, against the light-only
+convention. #12 is also 1x (799px wide, so slightly soft once scaled to the
+column), shows macOS output on the Windows and Linux pages because the partial
+is shared, and stops at the start of the SDK list, before the issues summary
+the text under it describes. Chris chose an image over sample output in a
+code block.
 
-**Nothing left in the guides can be shot by the harness.** Every remaining
-guide image is either a desktop application, a launcher, or a decision.
+### Replaced by text
 
-- **#8, #9, #10** the VS Code Titanium view, the Pulsar toolbar, the JetBrains
-  build explorer. **#18** three Alloy files open side by side. **#19** VS Code
-  stopped at a breakpoint. **#20** Xcode's signing pane. **#21** the Play
-  Console. A person at a desk with the application open.
-- **#4** the launcher icon masks. Needs the `com.android.theme.icon.*` overlay
-  packages to switch mask shape, and `cmd overlay list` on the Pixel 10 image
-  has none of them. Wants a system image carrying the Pixel themes, or a real
-  device.
-- **#6** the camera overlay and captured photo. The emulator's fake camera can
-  be driven, but the shutter needs a tap at a coordinate and the test scene is
-  not worth putting on a page. Shoot by hand or drop it.
-- **#22** the three iOS 18 icon appearances. A home screen customisation
-  setting that `simctl` does not expose.
-- **`ti info` x3 (#12)** is a decision, not a shoot. A code block is
-  searchable, copyable and cannot go stale silently; say yes and three images
-  leave this list.
-- **#11** the JetBrains logo treatment is a licensing question, tracked
-  separately as TI-96.
-- **The API reference, about 80 images.** This is where the volume is, and the
-  harness is built for it: roughly half the example entries under
-  `apidoc/Titanium/UI` are already self-contained runnable apps. It lands in
-  `tidev/titanium-sdk`, so it wants its own ticket.
+- **#18** the three Alloy files. A picture of code in an editor is code: the
+  `id and class` section of `alloy/views.md` now shows `alloy new`'s own
+  `index.xml`, `index.tss` and `index.js` as labelled code blocks, and says
+  which name in each file is the same thing.
 
-TI-78 asks for every image to be produced **or explicitly dropped with the
-reason recorded**. #4, #6 and #22 have their reasons above but have not been
-dropped, so the `:::missing` blocks for #4 and #6 are still on their pages.
+### Cancelled
+
+- **#9** the Pulsar toolbar and **#10** the JetBrains build explorer. Not being
+  shot; Chris's call on 2026-11-09. The pages describe both in prose.
+
+### Parked
+
+Wanted, and nobody can shoot them now. Each is a `:::missing` block inside an
+HTML comment at the spot the image belongs, so it draws nothing on the page and
+nothing in `/llms-full.txt`. Uncomment it when the image exists, then replace it.
+`grep -rn "Parked under TI-78" content/docs` lists them.
+
+| #   | Where                                       | Of                                                    | Why it is parked                                                                 |
+| --- | ------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------- |
+| 4   | `build/ui/icons-and-launch-screens`, Android | The adaptive icon under three launcher mask shapes    | The Pixel 10 image has no `com.android.theme.icon.*` overlays. Wants a device    |
+| 6   | `build/media`, "The camera"                 | Camera open, then the photo in its `ImageView`, as two bands, 16:9 | Shutter needs a tap at a coordinate; the fake-camera scene is not page-worthy |
+| 19  | `build/debugging`, "Breakpoints"            | VS Code paused on a breakpoint in an Alloy controller | A person at a desk                                                               |
+| 20  | `distribute/signing`, iOS                   | Xcode's Manage Certificates sheet                     | A person at a desk with a signing account. Redact the team                      |
+| 21  | `distribute/android`, "The version code"    | Play Console's App bundle explorer                    | Needs a Play account with an upload. Redact the account                          |
+| 22  | `build/ui/icons-and-launch-screens`, iOS    | One icon in default, Dark and Tinted                  | `simctl` cannot switch it; by hand in the Simulator, Edit, Customize             |
+
+#4 and #6 moved when they were parked: #4 had been under "Splash screen" and #6
+at the end of "Video". #6's brief changed from 9:16 to 16:9, because a whole
+portrait screen cannot be used in the prose at any scale.
+
+### Not an image task
+
+- **#11** the JetBrains logo is a licensing question, tracked as TI-96.
 
 ---
 

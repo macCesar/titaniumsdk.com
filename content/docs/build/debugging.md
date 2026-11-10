@@ -38,6 +38,17 @@ through a running app rather than reading log output. The JetBrains plugin
 debugs over the Chrome DevTools Protocol; on iOS it additionally needs
 `ios-webkit-debug-proxy`.
 
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+Visual Studio Code paused on a breakpoint in an Alloy controller, with the
+stopped line highlighted and the Variables pane showing a local's value.
+
+:::
+
+-->
+
 Without an editor integration there are no breakpoints. That is the honest
 answer, and it is why the log matters as much as it does here.
 

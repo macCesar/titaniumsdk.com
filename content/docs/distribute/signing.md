@@ -74,6 +74,18 @@ Make them in Xcode - **Settings, Accounts, Manage Certificates** - or in the
 developer portal. Xcode is less error-prone because it puts the private key in
 your keychain at the same time.
 
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+Xcode's Settings, Accounts, Manage Certificates sheet, listing an Apple
+Development and an Apple Distribution certificate. Redact the team name and
+anything else that identifies the account.
+
+:::
+
+-->
+
 Titanium reads certificates from the keychain and profiles from where Xcode
 keeps them, so anything Xcode can see it can use:
 

@@ -59,6 +59,8 @@ A **Titanium view** in the Activity Bar lists the platforms you can build for
 and the targets under each: simulators, emulators, and connected devices. Build
 commands are available inline on a target and on its right-click menu.
 
+![Visual Studio Code with the Titanium view open in the sidebar. Under Build App it lists iOS, with Device, Simulator, macOS, Ad Hoc, App Store and macOS App Store targets, and Android, with Device, Emulator and Play Store. The Emulator entry is expanded to show a Pixel 10, with run and debug buttons beside it. Below that are Recent builds and a Help And Feedback section. The editor on the right has the project's app.js open.](/docs/guides/vscode-titanium-view.png)
+
 `Titanium: Build` starts a build and `Titanium: Stop` ends one.
 
 | Command                             | macOS               | Windows and Linux    |
