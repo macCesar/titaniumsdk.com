@@ -45,6 +45,18 @@ Newer Xcode toolchains also accept an Icon Composer document at
 `DefaultIcon-ios.icon`, which carries every size and appearance itself. When
 one is present Titanium renders from it and skips generating an icon set.
 
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 4:3
+
+One app icon three times on an iPhone home screen, side by side: the default
+appearance, Dark and Tinted, so the three files above are visible as what each
+one produces. Switch with a long press on the home screen, Edit, Customize.
+
+:::
+
+-->
+
 ### Launch screens
 
 Titanium builds a launch screen storyboard by default, controlled in
@@ -85,6 +97,18 @@ Replace the PNGs at every density. The launcher crops the outer edge of an
 adaptive icon to whatever shape it wants, so keep anything that must stay
 visible inside the middle two-thirds.
 
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+The generated adaptive icon on an Android launcher, shown three times with
+different mask shapes - circle, squircle and rounded square - so the cropping is
+visible. Needs a device or system image whose launcher can change icon shape.
+
+:::
+
+-->
+
 In an Alloy project these live under `app/platform/android/res/`, because
 `alloy new` moved `platform/` there. See
 [project structure](/docs/build/project-structure).
@@ -93,14 +117,6 @@ In an Alloy project these live under `app/platform/android/res/`, because
 
 Android's splash is a theme, not an image set. It is generated from the same
 launcher icon, so replacing the icon replaces what shows on launch.
-
-:::missing 16:9
-
-The generated adaptive icon on an Android emulator's launcher, shown three
-times with different mask shapes - circle, squircle and rounded square - so the
-cropping is visible.
-
-:::
 
 ## Changing the name under the icon
 

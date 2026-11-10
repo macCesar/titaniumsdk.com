@@ -35,6 +35,17 @@ slower than a debug one.
 rejects an upload whose version code is not higher than the last one**. It is
 the single most common failed upload.
 
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+The Play Console's App bundle explorer for an uploaded `.aab`, with its version
+code visible. Redact the developer account name.
+
+:::
+
+-->
+
 `version` is what users see. The two move independently, and a common scheme is
 to derive the code from the version so they cannot drift.
 

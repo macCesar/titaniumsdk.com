@@ -274,3 +274,51 @@ describe('renderMarkdown, accessibility', () => {
     assert.equal(opening.match(/\btabindex=/g)?.length, 1);
   });
 });
+
+describe('renderMarkdown, code blocks', () => {
+  test('puts a fence title in a bar above the code', () => {
+    const html = renderMarkdown('```js title="app/controllers/index.js"\n$.index.open();\n```', {
+      link,
+    });
+    assert.match(
+      html,
+      /^<figure class="code-file"><figcaption class="code-file-name">app\/controllers\/index\.js<\/figcaption><pre[^>]*class="[^"]*shiki/
+    );
+    assert.match(html, /<\/pre><\/figure>\s*$/);
+  });
+
+  test('still takes the language from the first word', () => {
+    // markdown-it would otherwise be the only thing reading the info string.
+    const html = renderMarkdown('```tss title=\'app/styles/app.tss\'\n"#a": {}\n```', { link });
+    assert.match(html, /app\/styles\/app\.tss/);
+    assert.match(html, /class="[^"]*shiki/);
+  });
+
+  test('escapes the title, so it cannot carry markup', () => {
+    const html = renderMarkdown('```js title="<img src=x onerror=alert(1)>"\n1;\n```', { link });
+    assert.doesNotMatch(html, /<img/);
+    assert.match(html, /<figcaption class="code-file-name">&lt;img src=x onerror=alert\(1\)&gt;/);
+  });
+
+  test('leaves a fence with no title as a bare block', () => {
+    assert.doesNotMatch(renderMarkdown('```js\n1;\n```', { link }), /<figure/);
+  });
+
+  test('leaves an image figure alone', () => {
+    const html = renderMarkdown(
+      '<figure><img src="/a.png" alt="A"><figcaption>A</figcaption></figure>',
+      {
+        link,
+      }
+    );
+    assert.doesNotMatch(html, /code-file/);
+  });
+
+  test('colours TSS selectors as TSS rather than as plain text', () => {
+    // It used to go through the XML grammar, which found no XML and gave
+    // every token the same colour.
+    const html = renderMarkdown('```tss\n".container": {\n  width: Ti.UI.SIZE\n}\n```', { link });
+    const colours = new Set(html.match(/--shiki-light:#[0-9A-Fa-f]{6}/g));
+    assert.ok(colours.size >= 4, `expected distinct token colours, got ${[...colours].join(' ')}`);
+  });
+});

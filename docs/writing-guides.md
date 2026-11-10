@@ -280,6 +280,27 @@ yarn global add titanium
 
 A panel with prose in it is rejected - that is `:::tabs`.
 
+### File names on code blocks
+
+When a block is the contents of a particular file, name it in the fence. The
+name is drawn in a bar across the top of the block:
+
+````md
+```tss title="app/styles/index.tss"
+"#label": {
+  color: "#000"
+}
+```
+````
+
+Use the path from the project root, as the reader would find it. Prefer this
+to a `` `app/styles/index.tss`: `` line above the block, which reads as a
+sentence fragment and is not attached to the code it names. Within a
+`:::code-group` the tab label already names the panel, so leave the title out.
+
+`tss` is highlighted with the Alloy TSS grammar from TiDev's VS Code
+extension, so tag the language as `tss`, not `css` or `js`.
+
 ### Platform blocks
 
 For a passage that applies to some platforms and not others.
@@ -376,6 +397,29 @@ of the picture, so it should be worth reading on its own.
 Use one rather than leaving a gap. A gap loses the fact that a picture was
 wanted; a stale screenshot is worse than either. Outstanding ones are tracked in
 TI-78.
+
+**Park one nobody can take yet** by wrapping it in an HTML comment, so the brief
+stays where the picture goes without a crossed box on the page:
+
+```md
+<!-- Parked under TI-78: wanted, nobody can shoot it yet. Uncomment when the image exists.
+
+:::missing 16:9
+
+Xcode's Manage Certificates sheet, listing an Apple Development certificate.
+
+:::
+
+-->
+```
+
+The sanitizer drops the comment from the page, and `flattenBlocks` drops it
+from `/llms-full.txt`. `grep -rn "Parked under TI-78" content/docs` lists them.
+
+**Not everything that wants a picture wants a screenshot.** Code in an editor is
+code: show the files as labelled code blocks, which are searchable, copyable
+and follow the reader's theme. An SVG of code is none of those, and through
+`<img>` it cannot follow the site's theme toggle.
 
 ### Platform-scoped source
 

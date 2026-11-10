@@ -1,4 +1,9 @@
-import { createHighlighterCoreSync, type HighlighterCore } from 'shiki/core';
+import tssGrammar from './grammars/tss.tmLanguage.json' with { type: 'json' };
+import {
+  createHighlighterCoreSync,
+  type HighlighterCore,
+  type LanguageRegistration,
+} from 'shiki/core';
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 import fish from 'shiki/langs/fish.mjs';
 import html from 'shiki/langs/html.mjs';
@@ -13,6 +18,28 @@ import typescript from 'shiki/langs/typescript.mjs';
 import xml from 'shiki/langs/xml.mjs';
 import githubDark from 'shiki/themes/github-dark.mjs';
 import githubLight from 'shiki/themes/github-light.mjs';
+
+/**
+ * Alloy's TSS, from TiDev's own editor support rather than borrowed.
+ *
+ * TSS was mapped to the XML grammar, which found no XML in it and coloured
+ * every token as plain text. CSS is the obvious stand-in and the wrong one: the
+ * selectors are CSS-like, but each one is a quoted string, and the values are
+ * JavaScript - `Ti.UI.SIZE`, nested objects, `Alloy.CFG` - which a CSS grammar
+ * mis-tokenises. The VS Code extension already has a grammar that knows both
+ * halves, colouring an `#id` and a `.class` the way CSS does and `Ti.*`
+ * constants as constants.
+ *
+ * `grammars/tss.tmLanguage.json` is `grammars/tss.JSON-tmLanguage.json` from
+ * tidev/vscode-titanium 1.5.0, Apache 2.0 like this repository, unmodified.
+ * It carries an upstream typo - one `"includes"` for `"include"` on property
+ * names - which costs nothing visible and is left so the file stays a straight
+ * copy that a later upstream version can replace. It includes no other
+ * grammar, so it adds 21KB and no dependency on the CSS or JavaScript ones.
+ *
+ * Shiki keys a language by `name`, which upstream uses for the display name.
+ */
+const tss = { ...tssGrammar, name: 'tss', displayName: tssGrammar.name } as LanguageRegistration;
 
 /**
  * Syntax highlighting for the code blocks in registry prose (TI-10).
@@ -59,7 +86,7 @@ const LANGS = {
   js: 'javascript',
   jsx: 'javascript',
   xml: 'xml',
-  tss: 'xml',
+  tss: 'tss',
   html: 'html',
   json: 'json',
   sh: 'shellscript',
@@ -159,6 +186,7 @@ function core(): HighlighterCore {
     langs: [
       javascript,
       xml,
+      tss,
       html,
       json,
       shellscript,

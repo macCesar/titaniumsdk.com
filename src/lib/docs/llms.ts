@@ -173,15 +173,33 @@ function openerText(name: string, argument: string): string {
  * paragraph applies to, and losing it turns an iOS-only instruction into a
  * universal one.
  *
+ * HTML comments are dropped, because the page never shows them: the sanitizer
+ * discards them from the HTML. A guide parks a `:::missing` block nobody can
+ * shoot yet inside one, and the generated partials open with a do-not-edit
+ * note, and neither is something a reader of the page ever sees. Only a
+ * comment that starts a line is recognised, which is the only kind markdown-it
+ * treats as an HTML block.
+ *
  * Fenced code is passed through untouched. A shell block that happens to
- * contain `:::` is not a directive.
+ * contain `:::` is not a directive, and an XML block's `<!--` is not a comment
+ * on the page.
  */
 export function flattenBlocks(markdown: string): string {
   const out: string[] = [];
   let fence: string | null = null;
   let depth = 0;
+  let comment = false;
 
   for (const line of markdown.split('\n')) {
+    if (comment) {
+      if (line.includes('-->')) comment = false;
+      continue;
+    }
+    if (!fence && /^ {0,3}<!--/.test(line)) {
+      comment = !line.slice(line.indexOf('<!--') + 4).includes('-->');
+      continue;
+    }
+
     const fenceMark = /^\s*(```+|~~~+)/.exec(line);
     if (fenceMark) {
       if (!fence) fence = fenceMark[1][0];
