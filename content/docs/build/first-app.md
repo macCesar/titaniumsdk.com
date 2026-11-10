@@ -151,9 +151,7 @@ Replace the contents of the file the template generated:
 
 @tab Classic
 
-`Resources/app.js`:
-
-```js
+```js title="Resources/app.js"
 const win = Ti.UI.createWindow({
   backgroundColor: 'backgroundColor'
 });
@@ -185,9 +183,7 @@ in light and dark mode.
 
 @tab Alloy
 
-`app/views/index.xml`:
-
-```xml
+```xml title="app/views/index.xml"
 <Alloy>
 	<Window>
 		<Label id="label" top="80">Tap the button</Label>
@@ -196,9 +192,7 @@ in light and dark mode.
 </Alloy>
 ```
 
-`app/styles/index.tss`:
-
-```tss
+```tss title="app/styles/index.tss"
 "Window": {
 	backgroundColor: "backgroundColor"
 }
@@ -208,9 +202,7 @@ in light and dark mode.
 }
 ```
 
-`app/controllers/index.js`:
-
-```js
+```js title="app/controllers/index.js"
 function sayHello() {
 	$.label.text = 'Hello from Titanium';
 }

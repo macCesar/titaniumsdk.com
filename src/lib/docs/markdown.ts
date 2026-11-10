@@ -25,6 +25,30 @@ const md = new MarkdownIt({
   typographer: false,
 });
 
+/**
+ * A fence can name the file it shows: ```` ```tss title="app/styles/index.tss" ````.
+ *
+ * The convention Docusaurus and Expressive Code use, so a README that already
+ * writes it gets a title here too. markdown-it keeps only the first word of
+ * the info string as the language and drops the rest, so the title has to be
+ * carried out of the fence by this renderer.
+ *
+ * It travels as a bare `<figure><figcaption>`, which the allowlist already
+ * permits, rather than as an attribute it would have to be taught to keep.
+ * `codeFileTitles` adds the classes after sanitizing, the same arrangement the
+ * highlighter uses. The name is escaped here, so it is text by the time the
+ * sanitizer sees it.
+ */
+const TITLE = /(?:^|\s)title=(?:"([^"]+)"|'([^']+)')/;
+const fence = md.renderer.rules.fence!;
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const html = fence(tokens, idx, options, env, self);
+  const title = TITLE.exec(tokens[idx].info);
+  const name = (title?.[1] ?? title?.[2])?.trim();
+  if (!name) return html;
+  return `<figure><figcaption>${md.utils.escapeHtml(name)}</figcaption>${html}</figure>`;
+};
+
 const SANITIZE: sanitizeHtml.IOptions = {
   allowedTags: [
     ...sanitizeHtml.defaults.allowedTags,
@@ -274,7 +298,22 @@ export function renderMarkdown(source: string | undefined, options: RenderOption
   // All three run after the allowlist, never before - see highlight.ts. Letting
   // any of them write markup the sanitizer then has to permit would extend that
   // permission to whoever wrote the module README this also renders.
-  return focusableCodeBlocks(renderCallouts(highlightCodeBlocks(clean)));
+  return codeFileTitles(focusableCodeBlocks(renderCallouts(highlightCodeBlocks(clean))));
+}
+
+/**
+ * Turns a titled fence's `<figure>` into a code block with a file-name bar.
+ *
+ * Matches only a figure that is exactly a caption and one `<pre>`, which is
+ * the shape the fence renderer writes. A README's own `<figure>` around an
+ * image is left alone; one written by hand around a caption and a code block
+ * is styled the same way, which is what it would have meant.
+ */
+function codeFileTitles(html: string): string {
+  return html.replace(
+    /<figure><figcaption>([^<]*)<\/figcaption>(<pre[\s>][\s\S]*?<\/pre>)\s*<\/figure>/g,
+    '<figure class="code-file"><figcaption class="code-file-name">$1</figcaption>$2</figure>'
+  );
 }
 
 /**

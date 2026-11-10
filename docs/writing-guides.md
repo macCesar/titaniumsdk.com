@@ -280,6 +280,27 @@ yarn global add titanium
 
 A panel with prose in it is rejected - that is `:::tabs`.
 
+### File names on code blocks
+
+When a block is the contents of a particular file, name it in the fence. The
+name is drawn in a bar across the top of the block:
+
+````md
+```tss title="app/styles/index.tss"
+"#label": {
+  color: "#000"
+}
+```
+````
+
+Use the path from the project root, as the reader would find it. Prefer this
+to a `` `app/styles/index.tss`: `` line above the block, which reads as a
+sentence fragment and is not attached to the code it names. Within a
+`:::code-group` the tab label already names the panel, so leave the title out.
+
+`tss` is highlighted with the Alloy TSS grammar from TiDev's VS Code
+extension, so tag the language as `tss`, not `css` or `js`.
+
 ### Platform blocks
 
 For a passage that applies to some platforms and not others.

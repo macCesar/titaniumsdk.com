@@ -57,6 +57,47 @@ attribute.
 `id` makes the element reachable in the controller as `$.<id>`, and selectable
 in TSS as `#<id>`. `class` is for TSS only, and takes a space-separated list.
 
+The app `alloy new` generates uses both, across its three files:
+
+```xml title="app/views/index.xml"
+<Alloy>
+  <Window class="container">
+    <Label id="label" onClick="doClick">Hello, World</Label>
+  </Window>
+</Alloy>
+```
+
+```tss title="app/styles/index.tss"
+".container": {
+  backgroundColor: "white"
+}
+
+"Label": {
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  color: "#000"
+}
+
+"#label": {
+  font: {
+    fontSize: 12
+  }
+}
+```
+
+```js title="app/controllers/index.js"
+function doClick(e) {
+  alert($.label.text);
+}
+
+$.index.open();
+```
+
+`id="label"` is `"#label"` in the style and `$.label` in the controller.
+`class="container"` is `".container"` in the style and nothing in the
+controller. `$.index` has no `id` in the view at all: the top-level element
+takes the view's file name unless you give it one.
+
 ```xml
 <View class="row highlighted" id="first" />
 ```
