@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "lightwave-link",
+  "name": "Lightwave LINK",
+  "subtitle": "Tower cameras and account tools for Alabama Lightwave",
+  "platforms": ["iphone", "android-phone"],
+  "sdkVersion": "13.4.0.GA",
+  "description": "Lightwave LINK is the companion app for Alabama Lightwave, a local wireless internet provider serving rural communities in Bibb, Chilton and Choctaw counties in Alabama.\n\nCustomers can watch live video from weather cameras mounted on the network's towers, see their plan and renewal date, check tower and network health, get outage and maintenance alerts, and chat with the local support team in Centreville.\n\nFirst responders and active duty military get access for free, whether or not they are customers.",
+  "website": "https://alabamalightwave.com/app/",
+  "appStore": "https://apps.apple.com/us/app/lightwave-link/id6745533161",
+  "playStore": "https://play.google.com/store/apps/details?id=com.alabamalightwave.link",
+  "placeholder": false
+}
