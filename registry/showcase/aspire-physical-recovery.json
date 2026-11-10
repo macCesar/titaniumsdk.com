@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "aspire-physical-recovery",
+  "name": "Aspire Physical Recovery",
+  "subtitle": "For guests and families at Aspire's recovery centers",
+  "platforms": ["iphone", "android-phone"],
+  "sdkVersion": "13.4.0.GA",
+  "description": "The official app for guests and families of the Aspire Physical Recovery Centers in Alabama: Cahaba River, Hoover and West Alabama. Pick a location once, with no account or sign-in, and the home screen shows the next activity, the next meal and the latest announcement.\n\nInside are the activity calendar, the weekly menu, a staff directory with tap-to-call, announcements from management, and push notifications with separate switches for activity reminders and meal alerts. Directions back to the facility open in Apple Maps or Google Maps. Staff at each location keep the content current.\n\nBuilt with Titanium and on the App Store since 2017.",
+  "website": "https://www.aspirephysicalrecovery.com/",
+  "appStore": "https://apps.apple.com/us/app/aspire-physical-recovery/id1206492400",
+  "playStore": "https://play.google.com/store/apps/details?id=com.signpilot.aspirephysicalrecovery",
+  "placeholder": false
+}
