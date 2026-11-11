@@ -103,7 +103,6 @@ ti sdk i 14.0.0.GA
   * update ioslib to 6.0.2 ([a5675bd](https://github.com/tidev/titanium-sdk/commit/a5675bde5d247a2906a95751c8776ecdda385b21))
   * Xcode 27.2 and iPhone Duo fixes ([3e7f644](https://github.com/tidev/titanium-sdk/commit/3e7f64409af4d9e6056d96edeaf2060dca74333a))
   * replace custom Ti.UI.iOS.SplitWindow with native UISplitViewController ([c48c1a9](https://github.com/tidev/titanium-sdk/commit/c48c1a95f71cb83df415b7cc14eeff3c806c23ee))
-  * add arrangementStyle to SplitWindow for iPhone Duo ([f686534](https://github.com/tidev/titanium-sdk/commit/f6865342bbd0637bfc6da19098aa0152e6462962))
   * add vertical bar APIs for iPhone Duo ([99f58f6](https://github.com/tidev/titanium-sdk/commit/99f58f692e0dca6bd26eecfd934bcd0d4c0be431))
   * add Window.reservedRegions for iPhone Duo ([542522a](https://github.com/tidev/titanium-sdk/commit/542522af266b7ee5fd8044d651d9702f12264d7a))
   * add hingechange event for iPhone Duo ([cd3c69a](https://github.com/tidev/titanium-sdk/commit/cd3c69a79528ef5c7585f9c1a5efb24c4aeee8d6))
@@ -256,7 +255,6 @@ ti sdk i 14.0.0.GA
 
 ### iOS platform
 
-* add arrangementStyle to SplitWindow for iPhone Duo ([f686534](https://github.com/tidev/titanium-sdk/commit/f6865342bbd0637bfc6da19098aa0152e6462962))
 * add CFBundleVersion comment to tiapp.xml ([58333bf](https://github.com/tidev/titanium-sdk/commit/58333bf86386cd36372dc38399c7b437e4e805c1))
 * add hideSharedBackground to navBar buttons ([5a11ad4](https://github.com/tidev/titanium-sdk/commit/5a11ad49d8a967c50dba1de9337eb7e30d85cc06))
 * add hingechange event for iPhone Duo ([cd3c69a](https://github.com/tidev/titanium-sdk/commit/cd3c69a79528ef5c7585f9c1a5efb24c4aeee8d6))
