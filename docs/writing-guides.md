@@ -93,8 +93,11 @@ other so the two are not mistaken for one scheme.
 
 ### Cutting a major
 
-When an SDK major ships, one command snapshots the current guides and moves the
-live set on:
+When an SDK major ships, the snapshot is cut automatically: the Regen API Docs
+workflow compiles the release's reference and, if it is the first GA of a newer
+major than `content/doc-versions.json` names, runs the command below in the same
+commit. Nobody has to remember it. Running it by hand still works, for a dry run
+or if the workflow did not:
 
 ```sh
 pnpm docs:snapshot v14 --dry-run   # see the plan
@@ -493,13 +496,13 @@ expensive part. A shot of app UI should not be taken by hand at all:
 `scripts/capture-screenshots.ts` applies all of this, and a reshoot after an
 SDK change is then one command rather than an afternoon.
 
-| | |
-| ---------------- | ------------------------------------------------------------------------------ |
-| Theme            | **Light only.** The harness produces dark from one flag if this is revisited |
-| iOS device       | iPhone 17 Pro Max, 440x956pt                                                 |
-| Android device   | Pixel 10 emulator, 411dp wide at density 2.625                               |
-| Status bar       | Fixed at 9:41, charged, full bars, or cropped out of frame                   |
-| Project name     | `Hello`, which is the name the guides already use                            |
+|                |                                                                              |
+| -------------- | ---------------------------------------------------------------------------- |
+| Theme          | **Light only.** The harness produces dark from one flag if this is revisited |
+| iOS device     | iPhone 17 Pro Max, 440x956pt                                                 |
+| Android device | Pixel 10 emulator, 411dp wide at density 2.625                               |
+| Status bar     | Fixed at 9:41, charged, full bars, or cropped out of frame                   |
+| Project name   | `Hello`, which is the name the guides already use                            |
 
 Never in frame: signing identities, team names, keystore paths, tokens, or any
 console line carrying a password argument. See the

@@ -49,12 +49,16 @@ wherever a version appears, since they are on different numbers.
 
 ## Where the content comes from
 
-`registry/sdk/<version>/release-notes.md`, captured from `tidev/titanium-docs`
-by `scripts/capture-release-notes.ts` and committed. Not fetched at build: the
+`registry/sdk/<version>/release-notes.md`, committed. Not fetched at build: the
 build takes no network at all, which `pnpm check:offline` enforces (TI-25).
 
-Run it deliberately when a release ships, never on a schedule. A published
-release's notes do not change.
+**From 14.0.0 on**, titanium-sdk's release workflow generates the note from its
+changelog and opens it here as a pull request, together with a draft
+announcement. `docs/releases.md` describes that flow.
+
+**Up to 13.4.1**, the notes were copied from `tidev/titanium-docs` by
+`scripts/capture-release-notes.ts`, which still works for those and is not
+needed for anything newer: titanium-docs is no longer where notes are written.
 
 ```
 node scripts/capture-release-notes.ts          list what is there
