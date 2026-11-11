@@ -1,6 +1,6 @@
 ---
 title: Titanium SDK 14.0.0.GA
-date: 2026-11-09
+date: 2026-11-11
 version: 14.0.0
 channel: GA
 ---
