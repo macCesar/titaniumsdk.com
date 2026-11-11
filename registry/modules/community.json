@@ -6,7 +6,7 @@
       "titanium-module in:topics language:objc language:swift language:java language:kotlin language:javascript",
       "titanium-sdk in:topics language:objc language:swift language:java language:kotlin language:javascript"
     ],
-    "repos": 147
+    "repos": 150
   },
   "modules": [
     {
@@ -215,7 +215,7 @@
       ],
       "stars": 29,
       "archived": false,
-      "pushedAt": "2025-12-25T08:33:50Z"
+      "pushedAt": "2026-11-11T07:28:21Z"
     },
     {
       "id": "kosso/TiScreenRecorder",
@@ -707,7 +707,7 @@
       ],
       "stars": 8,
       "archived": false,
-      "pushedAt": "2026-11-09T13:12:27Z"
+      "pushedAt": "2026-11-11T04:30:28Z"
     },
     {
       "id": "hansemannn/titanium-firebase-auth",
@@ -1338,6 +1338,21 @@
       "pushedAt": "2023-01-26T11:40:06Z"
     },
     {
+      "id": "macCesar/TiAudioStream",
+      "name": "TiAudioStream",
+      "owner": "macCesar",
+      "ownerUrl": "https://github.com/macCesar",
+      "url": "https://github.com/macCesar/TiAudioStream",
+      "description": "Audio streaming module for Titanium SDK",
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "stars": 3,
+      "archived": false,
+      "pushedAt": "2026-11-11T01:41:21Z"
+    },
+    {
       "id": "mobilehero-archive/titanium-applesignin",
       "name": "titanium-applesignin",
       "owner": "mobilehero-archive",
@@ -1849,6 +1864,35 @@
       "stars": 1,
       "archived": false,
       "pushedAt": "2026-10-24T18:22:24Z"
+    },
+    {
+      "id": "macCesar/ti.macos.panels",
+      "name": "ti.macos.panels",
+      "owner": "macCesar",
+      "ownerUrl": "https://github.com/macCesar",
+      "url": "https://github.com/macCesar/ti.macos.panels",
+      "description": "Native macOS open and save panels for Titanium SDK apps running on Mac Catalyst.",
+      "platforms": [
+        "ios"
+      ],
+      "stars": 1,
+      "archived": false,
+      "pushedAt": "2026-11-10T05:23:36Z"
+    },
+    {
+      "id": "macCesar/TiSynthEngine",
+      "name": "TiSynthEngine",
+      "owner": "macCesar",
+      "ownerUrl": "https://github.com/macCesar",
+      "url": "https://github.com/macCesar/TiSynthEngine",
+      "description": "Native audio synthesis for Titanium SDK on Android and iOS, with reusable sounds, effects and native-clock patterns.",
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "stars": 1,
+      "archived": false,
+      "pushedAt": "2026-11-04T01:06:38Z"
     },
     {
       "id": "mobilehero-archive/titanium-coremotion",
