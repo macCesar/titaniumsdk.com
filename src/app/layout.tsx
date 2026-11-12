@@ -1,8 +1,9 @@
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next';
 import { CodeCopy } from '@/components/docs/code-copy';
 import { TabSync } from '@/components/docs/tab-sync';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { OPEN_GRAPH } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 import { THEME_INIT } from '@/lib/theme-init';
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         </body>
       </html>
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
