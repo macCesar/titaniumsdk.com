@@ -13,11 +13,11 @@
   "specialties": [
     "alloy",
     "app-store-release",
-    "cross-platform-ui"
+    "cross-platform-ui",
+    "native-modules-ios",
+    "native-modules-android"
   ],
   "skills": [
-    "JavaScript",
-    "Titanium SDK",
     "Alloy",
     "PurgeTSS"
   ],
